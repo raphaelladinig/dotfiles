@@ -1,0 +1,10 @@
+user_pref("browser.shell.checkDefaultBrowser", false);
+user_pref("browser.startup.homepage", "chrome://browser/content/blanktab.html");
+user_pref("browser.newtabpage.enabled", false);
+user_pref("browser.search.separatePrivateDefault", false);
+user_pref("zen.tabs.show-newtab-vertical", false);
+user_pref("zen.tabs.vertical.right-side", true);
+user_pref("zen.themes.updated-value-observer", true);
+user_pref("zen.view.compact.toolbar-flash-popup", false);
+user_pref("zen.welcome-screen.seen", true);
+user_pref("zen.pinned-tab-manager.restore-pinned-tabs-to-pinned-url", true);
