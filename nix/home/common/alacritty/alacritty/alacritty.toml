@@ -1,0 +1,23 @@
+[general]
+import = [
+  "./catppuccin.toml"
+]
+live_config_reload = true
+ipc_socket = true
+
+[window]
+padding = { x = 4, y = 4 }
+decorations = "None"
+
+[font]
+size = 15
+normal = { family = "CaskaydiaCove NF" }
+bold = { family = "CaskaydiaCove NF" }
+italic = { family = "CaskaydiaCove NF" }
+bold_italic = { family = "CaskaydiaCove NF" }
+
+[mouse]
+hide_when_typing = true
+
+[selection]
+save_to_clipboard = true

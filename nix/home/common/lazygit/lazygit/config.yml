@@ -1,0 +1,4 @@
+showRandomTip: false
+disableStartupPopups: false
+git:
+  overrideGpg: true
