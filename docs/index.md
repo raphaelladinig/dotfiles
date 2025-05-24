@@ -1,0 +1,3 @@
+## misc
+
+- [shell](./shell.md)

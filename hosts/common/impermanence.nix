@@ -1,0 +1,51 @@
+{
+  config,
+  inputs,
+  ...
+}: let
+  dirs = builtins.concatStringsSep "\n" (builtins.map (i: i.dirPath) config.environment.persistence."/persist".directories);
+  files = builtins.concatStringsSep "\n" (builtins.map (i: i.filePath) config.environment.persistence."/persist".files);
+in {
+  imports = [
+    inputs.impermanence.nixosModules.impermanence
+  ];
+
+  boot.initrd.systemd = {
+    enable = true;
+
+    services.rollback = {
+      wantedBy = ["initrd.target"];
+      after = ["initrd-root-device.target"];
+      before = ["sysroot.mount"];
+      serviceConfig.Type = "oneshot";
+      script = ''
+        mkdir /btrfs_tmp
+        mount /dev/root_vg/root /btrfs_tmp
+        if [[ -e /btrfs_tmp/root ]]; then
+          if [[ -e /btrfs_tmp/old_root ]]; then
+            btrfs subvolume delete /btrfs_tmp/old_root
+          fi
+          mv /btrfs_tmp/root /btrfs_tmp/old_root
+        fi
+        btrfs subvolume create /btrfs_tmp/root
+        umount /btrfs_tmp
+      '';
+    };
+  };
+
+  fileSystems."/persist".neededForBoot = true;
+
+  environment.persistence."/persist" = {
+    directories = [
+      "/var/lib/nixos"
+      "/var/lib/systemd"
+      "/var/log"
+      "/var/lib/agenix"
+    ];
+  };
+
+  environment.variables = {
+    PERSIST_DIRS = dirs;
+    PERSIST_FILES = files;
+  };
+}

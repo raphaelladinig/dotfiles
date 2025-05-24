@@ -1,0 +1,17 @@
+format = """
+$directory\
+$character
+"""
+
+add_newline = false
+
+[character]
+success_symbol = "[>](green)"
+error_symbol = "[>](red)"
+vimcmd_symbol = "[<](green)"
+
+[directory]
+format = "[$path ](blue)"
+truncate_to_repo = false
+truncation_length = 5
+truncation_symbol = ".../"

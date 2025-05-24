@@ -1,0 +1,38 @@
+{
+  "layer": "top",
+  "modules-left": ["hyprland/workspaces"],
+  "modules-center": ["clock"],
+  "modules-right": [
+    "network",
+    "custom/separator",
+    "wireplumber",
+    "custom/separator",
+    "battery",
+  ],
+  "hyprland/workspaces": {},
+  "clock": {
+    "format": "{:%H:%M - %A, %B %d}",
+    "tooltip": false,
+  },
+  "network": {
+    "format-wifi": "net {essid}",
+    "format-ethernet": "net {ipaddr}/{cidr}",
+    "format-disconnected": "net disconnected",
+    "tooltip": false,
+  },
+  "wireplumber": {
+    "format": "vol {volume}%",
+    "format-muted": "vol {volume}% (muted)",
+    "tooltip": false,
+  },
+  "battery": {
+    "format": "bat {capacity}%",
+    "format-charging": "bat {capacity}% (charging)",
+    "format-full": "bat full",
+    "tooltip": false,
+  },
+  "custom/separator": {
+    "format": "|",
+    "tooltip": false,
+  },
+}
