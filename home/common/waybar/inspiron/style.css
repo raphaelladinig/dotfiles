@@ -1,0 +1,30 @@
+* {
+  all: unset;
+  font-family: CaskaydiaCove NF;
+  font-size: 14pt;
+}
+
+window#waybar {
+  background-color: #161616;
+  color: #ffffff;
+}
+
+#workspaces button {
+  padding: 0 0.5em;
+  border-bottom: 0.15em solid transparent;
+}
+
+#workspaces button.active {
+  border-bottom: 0.15em solid white;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+  margin: 0 0.4em;
+  min-height: 1.5em;
+}
+
+#custom-separator {
+  margin: 0 0.4em;
+}

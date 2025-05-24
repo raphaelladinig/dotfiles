@@ -1,0 +1,14 @@
+anchor=top-right
+max-visible=10
+font=CaskaydiaCove NF 15
+background-color=#101010
+text-color=#ffffff
+border-color=#ffffff
+border-radius=0
+progress-color=over #ffffff
+padding=7
+margin=7
+border-size=2
+
+[mode=dnd]
+invisible=1

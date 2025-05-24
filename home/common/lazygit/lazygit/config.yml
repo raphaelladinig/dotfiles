@@ -1,0 +1,12 @@
+showRandomTip: false
+disableStartupPopups: false
+
+git:
+  overrideGpg: true
+
+customCommands:
+  - key: '<c-s>'
+    context: 'commits'
+    command: 'git commit --amend --gpg-sign --no-edit --signoff'
+    description: "sign last commit"
+    loadingText: 'signing...'
