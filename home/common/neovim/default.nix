@@ -60,6 +60,7 @@ in {
             nix
             cpp
             c
+            c_sharp
             typst
             python
             markdown
