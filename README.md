@@ -8,7 +8,7 @@
 
 ### users
 
-- [`raphael`](./hosts/common/users/nixos/raphael/)
+- [`raphael der coole`](./hosts/common/users/nixos/raphael/)
 
 ## resources
 
