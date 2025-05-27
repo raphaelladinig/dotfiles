@@ -5,7 +5,6 @@
 ### hosts
 
 - [`inspiron`](./hosts/nixos/inspiron/)
-- [`hetzner-cloud`](./hosts/nixos/hetzner-cloud/)
 
 ### users
 

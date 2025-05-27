@@ -5,7 +5,6 @@
     ./git.nix
     ./school.nix
     ./ssh.nix
-    ./syncthing.nix
     ../common/hyprland
   ];
 
