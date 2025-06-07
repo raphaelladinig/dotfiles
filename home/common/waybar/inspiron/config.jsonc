@@ -1,17 +1,26 @@
 {
   "layer": "top",
-  "modules-left": ["hyprland/workspaces"],
-  "modules-center": ["clock"],
+  "modules-left": [
+    "hyprland/workspaces",
+    "custom/separator",
+    "hyprland/window",
+  ],
+  "modules-center": [],
   "modules-right": [
     "network",
     "custom/separator",
     "wireplumber",
     "custom/separator",
     "battery",
+    "custom/separator",
+    "clock",
   ],
   "hyprland/workspaces": {},
+  "hyprland/window": {
+    "tooltip": false,
+  },
   "clock": {
-    "format": "{:%H:%M - %A, %B %d}",
+    "format": "{:%H:%M}",
     "tooltip": false,
   },
   "network": {
