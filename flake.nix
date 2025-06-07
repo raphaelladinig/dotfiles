@@ -21,9 +21,7 @@
 
     impermanence.url = "github:nix-community/impermanence";
 
-    secrets = {
-      url = "git+ssh://git@github.com/raphaelladinig/secrets.git?ref=main&shallow=1";
-    };
+    secrets.url = "git+ssh://git@github.com/raphaelladinig/secrets.git?ref=main&shallow=1";
 
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
