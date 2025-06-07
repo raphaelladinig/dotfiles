@@ -20,7 +20,6 @@
     cliphist
     wl-clipboard
     hyprpicker
-    hyprsunset
   ];
 
   imports = [
@@ -37,6 +36,7 @@
   services = {
     hypridle.enable = true;
     hyprpolkitagent.enable = true;
+    hyprsunset.enable = true;
   };
 
   programs.hyprlock.enable = true;
