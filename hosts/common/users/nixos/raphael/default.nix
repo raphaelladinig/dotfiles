@@ -13,6 +13,7 @@ in {
     ../../../hyprland.nix
     ../../../ssh
     ../../../virtualisation.nix
+    ../../../steam.nix
   ];
 
   userSpec.raphael = {
@@ -62,6 +63,12 @@ in {
       "/home/raphael"
       "/var/lib/bluetooth"
       "/var/lib/mysql"
+    ];
+  };
+
+   programs.steam.package = pkgs.steam.override {
+    extraPkgs = p: [
+      p.bibata-cursors
     ];
   };
 }
