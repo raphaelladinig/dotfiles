@@ -1,6 +1,6 @@
 {
   "layer": "top",
-  "modules-left": ["hyprland/workspaces", "hyprland/window"],
+  "modules-left": ["hyprland/workspaces"],
   "modules-center": [],
   "modules-right": [
     "network",
@@ -12,10 +12,6 @@
     "clock",
   ],
   "hyprland/workspaces": {},
-  "hyprland/window": {
-    "format": " {title}",
-    "tooltip": false,
-  },
   "clock": {
     "format": "{:%H:%M}",
     "tooltip": false,
