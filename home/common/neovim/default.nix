@@ -33,7 +33,6 @@ in {
       aerial-nvim
       blink-cmp
       conform-nvim
-      copilot-lua
       diffview-nvim
       dressing-nvim
       fzf-lua
@@ -87,10 +86,8 @@ in {
       render-markdown-nvim
       typst-preview-nvim
       oil-nvim
-      avante-nvim
       plenary-nvim
       nui-nvim
-      blink-cmp-avante
     ];
   };
 
