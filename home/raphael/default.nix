@@ -14,7 +14,6 @@
     cryptsetup
     tokei
     tree
-    btop
     gnumake
     just
     pandoc

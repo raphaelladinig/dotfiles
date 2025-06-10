@@ -30,6 +30,7 @@
     ../starship
     ../lazygit
     ../neovim
+    ../btop
   ];
 
   programs = {
