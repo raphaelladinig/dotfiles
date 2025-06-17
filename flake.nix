@@ -45,7 +45,7 @@
       "x86_64-linux"
     ];
 
-    forEachSystem = f: nixpkgs.lib.genAttrs systems (system: f pkgsFor.${system});
+    forAllSystems = f: nixpkgs.lib.genAttrs systems (system: f pkgsFor.${system});
 
     pkgsFor = nixpkgs.lib.genAttrs systems (
       system:
@@ -56,9 +56,9 @@
         }
     );
   in {
-    formatter = forEachSystem (pkgs: pkgs.alejandra);
+    formatter = forAllSystems (pkgs: pkgs.alejandra);
 
-    devShells = forEachSystem (
+    devShells = forAllSystems (
       pkgs: {
         default = pkgs.mkShell {
           nativeBuildInputs = with pkgs; [
@@ -75,7 +75,7 @@
       }
     );
 
-    packages = forEachSystem (pkgs: import ./packages {inherit pkgs;});
+    packages = forAllSystems (pkgs: import ./packages {inherit pkgs;});
 
     overlays = import ./overlays {inherit inputs;};
 
