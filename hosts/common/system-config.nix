@@ -7,7 +7,7 @@
   timezone = config.hostSpec.timezone;
 in {
   hostSpec = {
-    stateVersion = "25.05";
+    stateVersion = "25.11";
     useOSProber = false;
   };
 
