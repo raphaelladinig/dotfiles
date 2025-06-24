@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   imports = [
-    ../common/templates/main.nix
+    ../common/templates/simple.nix
     ./yubikey.nix
     ./git.nix
     ./school.nix

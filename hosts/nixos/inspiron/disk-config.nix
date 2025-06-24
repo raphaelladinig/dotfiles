@@ -1,5 +1,5 @@
 {
-  imports = [../../common/templates/hosts/nixos/main/disk-config.nix];
+  imports = [../../common/templates/hosts/nixos/simple/disk-config.nix];
 
   disko.devices = {
     disk.main = {

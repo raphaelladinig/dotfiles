@@ -6,7 +6,7 @@
   username = "raphael";
 in {
   imports = [
-    (import ../../../templates/users/nixos/main.nix (args // {inherit username;}))
+    (import ../../../templates/users/nixos/simple.nix (args // {inherit username;}))
     ./school.nix
     ../../../yubikey.nix
     ../../../sudo.nix

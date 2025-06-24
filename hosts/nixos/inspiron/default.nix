@@ -6,7 +6,7 @@
   secretsPath = config.hostSpec.secretsPath;
 in {
   imports = [
-    ../../common/templates/hosts/nixos/main
+    ../../common/templates/hosts/nixos/simple
     ./disk-config.nix
     ../../common/power-management.nix
     ../../common/bluetooth.nix
