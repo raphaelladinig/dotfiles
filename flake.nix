@@ -94,5 +94,14 @@
         };
       }) (builtins.attrNames (builtins.readDir ./hosts/nixos))
     );
+
+    templates = {
+      simple = {
+        description = "simple flake template";
+        path = ./templates/simple;
+      };
+
+      default = self.templates.simple;
+    };
   };
 }
