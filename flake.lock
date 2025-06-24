@@ -426,7 +426,39 @@
         "type": "github"
       }
     },
+    "nixpkgs-stable_2": {
+      "locked": {
+        "lastModified": 1750622754,
+        "narHash": "sha256-kMhs+YzV4vPGfuTpD3mwzibWUE6jotw5Al2wczI0Pv8=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "c7ab75210cb8cb16ddd8f290755d9558edde7ee1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-25.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-unstable": {
+      "locked": {
+        "lastModified": 1750506804,
+        "narHash": "sha256-VLFNc4egNjovYVxDGyBYTrvVCgDYgENp5bVi9fPTDYc=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "4206c4cb56751df534751b058295ea61357bbbaa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-unstable_2": {
       "locked": {
         "lastModified": 1750506804,
         "narHash": "sha256-VLFNc4egNjovYVxDGyBYTrvVCgDYgENp5bVi9fPTDYc=",
@@ -475,13 +507,15 @@
     "secrets": {
       "inputs": {
         "agenix": "agenix_2",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_2",
+        "nixpkgs-stable": "nixpkgs-stable_2",
+        "nixpkgs-unstable": "nixpkgs-unstable_2"
       },
       "locked": {
-        "lastModified": 1750357867,
-        "narHash": "sha256-wu4d8PWk/jE4+Qk+r7e1pj01cnReRe+dsEiavEfBJp4=",
+        "lastModified": 1750783129,
+        "narHash": "sha256-Moa8/6FOKwJ9aWLXWIRy18IlW8oA8QeTNOcsu7oodNM=",
         "ref": "main",
-        "rev": "dc0a4f1638f2cdad3efc41810ab406241f4c7c16",
+        "rev": "07a351a1a5b931fc6d3dd7c89b206ec0147a16df",
         "shallow": true,
         "type": "git",
         "url": "ssh://git@github.com/raphaelladinig/secrets.git"
