@@ -8,3 +8,4 @@ user_pref("zen.themes.updated-value-observer", true);
 user_pref("zen.view.compact.toolbar-flash-popup", false);
 user_pref("zen.welcome-screen.seen", true);
 user_pref("zen.pinned-tab-manager.restore-pinned-tabs-to-pinned-url", true);
+user_pref("layout.spellcheckDefault", 0);
