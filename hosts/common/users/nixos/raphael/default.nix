@@ -13,6 +13,7 @@ in {
     ../../../hyprland.nix
     ../../../ssh
     ../../../virtualisation.nix
+    ../../../steam.nix
   ];
 
   userSpec.raphael = {
