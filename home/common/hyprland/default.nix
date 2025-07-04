@@ -29,7 +29,7 @@
     ../zsh
     ../gtk.nix
     ../qt.nix
-    ../zen-browser
+    ../zen-browser.nix
     ../waybar
   ];
 
