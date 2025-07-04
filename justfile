@@ -1,10 +1,10 @@
 default:
   @just --list
 
-rebuild mode='switch' host='${HOSTNAME}':
+rebuild mode="switch" host="${HOSTNAME}":
   sudo nixos-rebuild {{mode}} --flake .#{{host}}
 
-rebuild-boot host='${HOSTNAME}': (rebuild 'boot' host)
+rebuild-boot host="${HOSTNAME}": (rebuild "boot" host)
 
 format-disk arg:
   #!/bin/sh
@@ -16,7 +16,7 @@ format-disk arg:
 
   sudo disko --mode disko "$file"
 
-install host='${HOSTNAME}':
+install host="${HOSTNAME}":
   sudo nixos-install --no-root-passwd --flake .#{{host}}
 
 update: 
