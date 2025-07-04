@@ -30,16 +30,16 @@ in {
         };
       };
       folders = {
-        "Notes" = {
-          path = "/home/raphael/Notes";
+        "self" = {
+          path = "/home/raphael/self";
           devices = ["inspiron" "hetzner-cloud"];
         };
-        "Dev" = {
-          path = "/home/raphael/Dev";
+        "school" = {
+          path = "/home/raphael/school";
           devices = ["inspiron" "hetzner-cloud"];
         };
-        "Sync" = {
-          path = "/home/raphael/Sync";
+        "sync" = {
+          path = "/home/raphael/sync";
           devices = ["inspiron" "hetzner-cloud"];
         };
       };

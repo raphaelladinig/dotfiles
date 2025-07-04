@@ -26,8 +26,8 @@ in {
         };
       };
       folders = {
-        "Notes" = {
-          path = "/var/lib/syncthing/Notes";
+        "self" = {
+          path = "/var/lib/syncthing/self";
           versioning = {
             type = "simple";
             params = {
@@ -37,8 +37,8 @@ in {
           };
           devices = ["inspiron" "hetzner-cloud"];
         };
-        "Dev" = {
-          path = "/var/lib/syncthing/Dev";
+        "school" = {
+          path = "/var/lib/syncthing/school";
           versioning = {
             type = "simple";
             params = {
@@ -48,8 +48,8 @@ in {
           };
           devices = ["inspiron" "hetzner-cloud"];
         };
-        "Sync" = {
-          path = "/var/lib/syncthing/Sync";
+        "sync" = {
+          path = "/var/lib/syncthing/sync";
           versioning = {
             type = "simple";
             params = {
