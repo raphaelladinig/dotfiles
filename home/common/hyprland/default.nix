@@ -30,6 +30,7 @@
     ../gtk.nix
     ../qt.nix
     ../zen-browser.nix
+    ../wireplumber
     ../waybar
   ];
 
