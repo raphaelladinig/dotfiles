@@ -59,8 +59,41 @@ in {
   };
 
   environment.persistence."/persist" = {
+    users.raphael = {
+      directories = [
+        "Desktop"
+        "Documents"
+        "Downloads"
+        "Music"
+        "Pictures"
+        "Public"
+        "Templates"
+        "Videos"
+
+        "sync"
+        "self"
+        "school"
+        "Dev"
+        "VirtualMachines"
+        
+        ".zen"
+        ".ssh"
+        ".config/uwsm"
+        ".local/state/wireplumber"
+        ".local/share/zoxide"
+        ".local/share/direnv"
+        ".local/share/Steam"
+        ".local/share/DaVinciResolve"
+        ".local/share/nvim"
+        ".local/state/nvim"
+        ".local/state/lazygit"
+        ".platformio"
+      ];
+      files = [
+        ".zsh_history"
+      ];
+    };
     directories = [
-      "/home/raphael"
       "/var/lib/bluetooth"
       "/var/lib/mysql"
     ];
