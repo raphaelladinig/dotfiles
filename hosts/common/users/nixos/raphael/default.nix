@@ -70,7 +70,7 @@ in {
         "Templates"
         "Videos"
 
-        "sync"
+        "Sync"
         "self"
         "school"
         "Dev"
@@ -80,6 +80,7 @@ in {
         ".ssh"
         ".config/uwsm"
         ".local/state/wireplumber"
+        ".local/state/syncthing"
         ".local/share/zoxide"
         ".local/share/direnv"
         ".local/share/Steam"
