@@ -13,7 +13,11 @@ require("lualine").setup({
         "filename",
         path = 1,
       },
-      "diagnostics",
+      {
+        "diagnostics",
+        symbols = { error = "E", warn = "W", info = "I", hint = "H" },
+        update_in_insert = true,
+      },
       "diff",
     },
     lualine_x = {
@@ -30,7 +34,11 @@ require("lualine").setup({
         "filename",
         path = 1,
       },
-      "diagnostics",
+      {
+        "diagnostics",
+        symbols = { error = "E", warn = "W", info = "I", hint = "H" },
+        update_in_insert = true,
+      },
       "diff",
     },
     lualine_x = {

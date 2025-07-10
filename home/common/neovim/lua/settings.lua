@@ -24,6 +24,7 @@ vim.o.mousemodel = "extend"
 vim.o.virtualedit = "block"
 vim.o.ignorecase = true
 vim.o.signcolumn = "yes"
+
 vim.opt.shortmess:append("I")
 
-vim.diagnostic.config({ virtual_lines = true })
+vim.diagnostic.config({ update_in_insert = true, signs = false })
