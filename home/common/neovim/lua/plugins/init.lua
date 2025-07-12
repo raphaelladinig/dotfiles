@@ -1,4 +1,4 @@
-require("plugins.nightfox")
+require("plugins.catppuccin")
 require("plugins.nvim-treesitter")
 require("plugins.blink-cmp")
 require("plugins.luasnip")

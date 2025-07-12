@@ -41,7 +41,7 @@ in {
       lualine-nvim
       luasnip
       friendly-snippets
-      nightfox-nvim
+      catppuccin-nvim
       nvim-autopairs
       nvim-dap
       nvim-dap-ui
