@@ -38,7 +38,6 @@ alias g="lazygit"
 
 # nnn
 export NNN_OPTS="QUai"
-export NNN_PLUG="p:preview-tui"
 export NNN_BMS="d:$HOME/Downloads;D:$HOME/Documents/;m:/run/media"
 export NNN_COLORS="4444"
 BLK="0B" CHR="0B" DIR="04" EXE="01" REG="00" HARDLINK="02" SYMLINK="02" MISSING="08" ORPHAN="09" FIFO="02" SOCK="0B" OTHER="06"

@@ -1,10 +1,10 @@
 {pkgs, ...}: {
   home.file = {
-    ".config/kitty".source = ./kitty;
+    ".config/alacritty".source = ./alacritty;
   };
 
   home.packages = with pkgs; [
-    kitty
+    alacritty
     nerd-fonts.caskaydia-cove
   ];
 }

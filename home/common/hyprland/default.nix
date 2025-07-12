@@ -24,7 +24,7 @@
 
   imports = [
     ../mako
-    ../kitty
+    ../alacritty
     ../mpv
     ../zsh
     ../gtk.nix
