@@ -36,6 +36,18 @@ eval "$(zoxide init zsh)"
 alias v="nvim"
 alias g="lazygit"
 
+function t {
+  name=$(basename `pwd` | sed -e 's/\.//g')
+
+  if tmux ls 2>&1 | grep "$name"; then
+    tmux attach -t "$name"
+  elif [ -f .envrc ]; then
+    direnv exec / tmux new-session -s "$name"
+  else
+    tmux new-session -s "$name"
+  fi
+}
+
 # nnn
 export NNN_OPTS="QUai"
 export NNN_BMS="d:$HOME/Downloads;D:$HOME/Documents/;m:/run/media"

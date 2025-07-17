@@ -31,6 +31,7 @@
     ../lazygit
     ../neovim
     ../btop
+    ../tmux
   ];
 
   programs = {
