@@ -80,10 +80,6 @@
                   url = "https://github.com";
                 }
                 {
-                  name = "chess.com";
-                  url = "https://chess.com";
-                }
-                {
                   name = "misc";
                   bookmarks = [
                     {
