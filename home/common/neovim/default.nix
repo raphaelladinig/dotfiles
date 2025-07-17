@@ -78,6 +78,7 @@ in {
             json
             xml
             bash
+            rust
           ]))
       nvim-treesitter-context
       nvim-ts-autotag
@@ -89,10 +90,13 @@ in {
       plenary-nvim
       nui-nvim
       lazydev-nvim
+      rustaceanvim
     ];
   };
 
   home.packages = with pkgs; [
+    rust-analyzer
+    rustfmt
     fzf
     fd
     ripgrep
