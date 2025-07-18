@@ -75,6 +75,7 @@ in {
             html
             javascript
             typescript
+            tsx
             json
             xml
             bash

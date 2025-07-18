@@ -13,6 +13,7 @@ require("conform").setup({
     html = { "prettierd" },
     javascript = { "prettierd" },
     typescript = { "prettierd" },
+    typescriptreact = { "prettierd" },
     json = { "prettierd" },
     jsonc = { "prettierd" },
     cs = { "csharpier" },
