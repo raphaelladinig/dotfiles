@@ -72,6 +72,7 @@ in {
             git_rebase
             git_config
             css
+            scss
             html
             javascript
             typescript
