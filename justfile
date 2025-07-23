@@ -4,7 +4,11 @@ default:
 rebuild mode="switch" host="${HOSTNAME}":
   sudo nixos-rebuild {{mode}} --flake .#{{host}}
 
+r mode="switch" host="${HOSTNAME}": (rebuild mode host)
+
 rebuild-boot host="${HOSTNAME}": (rebuild "boot" host)
+
+rb host="${HOSTNAME}": (rebuild-boot host)
 
 format-disk arg:
   #!/bin/sh
