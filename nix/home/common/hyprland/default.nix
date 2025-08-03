@@ -26,7 +26,7 @@
     ../mako
     ../alacritty
     ../mpv
-    ../zsh
+    ../zsh.nix
     ../gtk.nix
     ../qt.nix
     ../zen-browser.nix
