@@ -74,6 +74,7 @@
       eval "$(direnv hook zsh)"
       
       export GEMINI_API_KEY=$(cat ~/.config/sops-nix/secrets/GEMINI_API_KEY)
+      export EDITOR=nvim
     '';
   };
 
