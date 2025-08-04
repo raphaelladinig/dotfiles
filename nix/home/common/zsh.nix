@@ -1,6 +1,7 @@
 {
   pkgs,
   hostSpec,
+  config,
   ...
 }: {
   home.file = {
@@ -49,31 +50,16 @@
         fi
       }
 
-      export NNN_OPTS="QUai"
-      export NNN_BMS="d:$HOME/Downloads;D:$HOME/Documents/;m:/run/media"
-      export NNN_COLORS="4444"
-      BLK="0B" CHR="0B" DIR="04" EXE="01" REG="00" HARDLINK="02" SYMLINK="02" MISSING="08" ORPHAN="09" FIFO="02" SOCK="0B" OTHER="06"
-      export NNN_FCOLORS="$BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SOCK$OTHER"
-      n ()
-      {
-          [ "$\{NNNLVL:-0}" -eq 0 ] || {
-              echo "nnn is already running"
-              return
-          }
-
-          NNN_TMPFILE="$\{XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
-
-          command nnn "$@"
-
-          [ ! -f "$NNN_TMPFILE" ] || {
-              . "$NNN_TMPFILE"
-              rm -f -- "$NNN_TMPFILE" > /dev/null
-          }
-      }
+      export nnn_opts="quai"
+      export nnn_bms="d:$home/downloads;d:$home/documents/;m:/run/media"
+      export nnn_colors="4444"
+      blk="0b" chr="0b" dir="04" exe="01" reg="00" hardlink="02" symlink="02" missing="08" orphan="09" fifo="02" sock="0b" other="06"
+      export nnn_fcolors="$blk$chr$dir$exe$reg$hardlink$symlink$missing$orphan$fifo$sock$other"
+      source ${pkgs.nnn}/share/quitcd/quitcd.bash_sh_zsh
 
       eval "$(direnv hook zsh)"
-      
-      export GEMINI_API_KEY=$(cat ~/.config/sops-nix/secrets/GEMINI_API_KEY)
+
+      export GEMINI_API_KEY=$(cat ${config.sops.secrets.GEMINI_API_KEY.path})
       export EDITOR=nvim
     '';
   };
