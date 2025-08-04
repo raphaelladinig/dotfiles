@@ -24,6 +24,7 @@ vim.o.mousemodel = "extend"
 vim.o.virtualedit = "block"
 vim.o.ignorecase = true
 vim.o.signcolumn = "yes"
+vim.o.swapfile = false
 
 vim.opt.shortmess:append("I")
 
