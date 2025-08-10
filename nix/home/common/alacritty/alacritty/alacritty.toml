@@ -16,11 +16,6 @@ bold = { family = "CaskaydiaCove NF" }
 italic = { family = "CaskaydiaCove NF" }
 bold_italic = { family = "CaskaydiaCove NF" }
 
-[cursor]
-style = { shape = "Beam", blinking = "Never" }
-vi_mode_style = { shape = "Block", blinking = "Never" }
-unfocused_hollow = true
-
 [mouse]
 hide_when_typing = true
 
