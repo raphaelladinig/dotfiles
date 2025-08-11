@@ -14,6 +14,7 @@ in {
     ../../ssh
     ../../virtualisation.nix
     ../../qmk.nix
+    ../../steam.nix
   ];
 
   "userSpec-${username}" = {
@@ -87,7 +88,9 @@ in {
 
         ".zen"
         ".ssh"
+        ".steam"
         ".config/uwsm"
+        ".local/share/Steam"
         ".local/state/wireplumber"
         ".local/state/syncthing"
         ".local/share/zoxide"
