@@ -79,9 +79,6 @@ in {
         "Templates"
         "Videos"
 
-        "org"
-        "Sync"
-
         "Dev"
         "VirtualMachines"
 
@@ -89,7 +86,6 @@ in {
         ".ssh"
         ".config/uwsm"
         ".local/state/wireplumber"
-        ".local/state/syncthing"
         ".local/share/zoxide"
         ".local/share/direnv"
         ".local/share/DaVinciResolve"

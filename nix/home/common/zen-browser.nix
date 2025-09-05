@@ -83,14 +83,6 @@
                   name = "misc";
                   bookmarks = [
                     {
-                      name = "syncthing";
-                      url = "localhost:8384";
-                    }
-                    {
-                      name = "hetzner";
-                      url = "https://accounts.hetzner.com";
-                    }
-                    {
                       name = "cups";
                       url = "localhost:631";
                     }
