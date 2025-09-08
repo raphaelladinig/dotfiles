@@ -3,7 +3,6 @@
     import ../packages {pkgs = final;};
 
   modifications = final: prev: {
-    nnn = import ./nnn.nix {inherit prev;};
   };
 
   nixpkgs-stable = final: prev: {

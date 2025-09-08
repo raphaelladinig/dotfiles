@@ -39,13 +39,6 @@
       alias g="lazygit"
       alias t="tmux"
 
-      export nnn_opts="quai"
-      export nnn_bms="d:$home/downloads;d:$home/documents/;m:/run/media"
-      export nnn_colors="4444"
-      blk="0b" chr="0b" dir="04" exe="01" reg="00" hardlink="02" symlink="02" missing="08" orphan="09" fifo="02" sock="0b" other="06"
-      export nnn_fcolors="$blk$chr$dir$exe$reg$hardlink$symlink$missing$orphan$fifo$sock$other"
-      source ${pkgs.nnn}/share/quitcd/quitcd.bash_sh_zsh
-
       eval "$(direnv hook zsh)"
 
       export GEMINI_API_KEY=$(cat ${config.sops.secrets.GEMINI_API_KEY.path})
@@ -66,7 +59,6 @@
       enable = true;
       nix-direnv.enable = true;
     };
-    nnn.enable = true;
   };
 
   home.packages = with pkgs; [
