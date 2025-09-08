@@ -14,6 +14,7 @@ in {
     ../../ssh
     ../../virtualisation.nix
     ../../qmk.nix
+    ../../steam.nix
   ];
 
   "userSpec-${username}" = {
@@ -96,6 +97,8 @@ in {
         ".local/share/nvim"
         ".local/state/nvim"
         ".local/state/lazygit"
+        ".steam"
+        ".local/share/Steam"
         ".platformio"
       ];
       files = [
