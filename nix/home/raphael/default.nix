@@ -18,7 +18,6 @@
     just
     pandoc
     pavucontrol
-    bluetuith
     davinci-resolve
     nodejs
     bun
