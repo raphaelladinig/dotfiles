@@ -4,18 +4,20 @@ in {
   services.ssh-agent.enable = true;
 
   programs.ssh = {
+    enableDefaultConfig = false;
     enable = true;
-    addKeysToAgent = "yes";
     matchBlocks = {
       "github.com" = {
         user = "git";
         hostname = "github.com";
+        addKeysToAgent = "yes";
         identityFile = [
           "/home/raphael/.ssh/ssh_raphael"
         ];
       };
       "5.75.151.162" = {
         user = "root";
+        addKeysToAgent = "yes";
         identityFile = [
           "/home/raphael/.ssh/ssh_raphael"
         ];
