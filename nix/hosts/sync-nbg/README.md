@@ -1,3 +1,3 @@
 # Description
 
-Hetzner-Cloud server for syncthing
+server for running syncthing
