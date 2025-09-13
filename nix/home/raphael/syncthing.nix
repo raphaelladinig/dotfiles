@@ -25,7 +25,10 @@ in {
         "inspiron" = {
           id = "ZK6XBCB-PDML64D-OKWV3QD-EC2LC2W-TGRMLK4-PNVW2A4-BQPPTNO-UXJACQQ";
         };
-        "hetzner-cloud" = {
+        "pixel" = {
+          id = "HBI2CGT-BWWHY3B-3BRAYDY-RI6YW5S-HYMPIS3-YBO6XWF-BWIP6YA-TZLTNQK";
+        };
+        "sync-nbg" = {
           id = "PIDQDU6-R5DNKS2-GKCKY2N-MEFX4C6-LNSQ6R2-SKJ4M44-WI55H4U-BCZBUAN";
         };
       };
@@ -33,12 +36,12 @@ in {
         "org" = {
           id = "org";
           path = "/home/raphael/org";
-          devices = ["inspiron" "hetzner-cloud"];
+          devices = ["inspiron" "sync-nbg" "pixel"];
         };
         "Sync" = {
           id = "default";
           path = "/home/raphael/Sync";
-          devices = ["inspiron" "hetzner-cloud"];
+          devices = ["inspiron" "sync-nbg" "pixel"];
         };
       };
     };

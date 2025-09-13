@@ -5,7 +5,7 @@
 ### hosts
 
 - [`inspiron`](./hosts/inspiron/)
-- [`hetzner-cloud`](./hosts/hetzner-cloud/)
+- [`sync-nbg`](./hosts/sync-nbg/)
 
 ### users
 

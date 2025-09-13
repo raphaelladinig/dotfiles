@@ -15,7 +15,7 @@ in {
           "/home/raphael/.ssh/ssh_raphael"
         ];
       };
-      "5.75.151.162" = {
+      "116.203.236.20" = {
         user = "root";
         addKeysToAgent = "yes";
         identityFile = [
