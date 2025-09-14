@@ -99,7 +99,10 @@ in {
         ".local/state/lazygit"
         ".steam"
         ".local/share/Steam"
+
         ".platformio"
+        ".config/tapyre"
+        ".local/share/tapyre"
       ];
       files = [
         ".zsh_history"

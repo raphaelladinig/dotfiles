@@ -2,6 +2,7 @@
   pkgs,
   config,
   lib,
+  inputs,
   ...
 }: let
   dotnet =
@@ -38,6 +39,7 @@ in
       dotnet
       dotnet-ef
       android-studio
+      inputs.tapyre.packages.${pkgs.system}.tapyre-astal
     ];
 
     home.sessionVariables = {

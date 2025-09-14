@@ -31,6 +31,11 @@
       url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    
+    tapyre = {
+      url = "github:tapyre/tapyre";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
