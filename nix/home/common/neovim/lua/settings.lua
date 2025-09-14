@@ -28,4 +28,4 @@ vim.o.swapfile = false
 
 vim.opt.shortmess:append("I")
 
-vim.diagnostic.config({ update_in_insert = true, signs = false })
+vim.diagnostic.config({ virtual_text = true })
