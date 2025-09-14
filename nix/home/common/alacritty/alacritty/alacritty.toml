@@ -7,7 +7,7 @@ ipc_socket = true
 
 [window]
 padding = { x = 4, y = 4 }
-decorations = "None"
+decorations = "Full"
 
 [font]
 size = 15
