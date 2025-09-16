@@ -1,14 +1,16 @@
 {
   "layer": "top",
+  "spacing": 20,
   "modules-left": ["hyprland/workspaces"],
   "modules-center": [],
   "modules-right": [
+    "tray",
+    "hyprland/language",
+    "custom/notifications",
+    "bluetooth",
     "network",
-    "custom/separator",
     "wireplumber",
-    "custom/separator",
     "battery",
-    "custom/separator",
     "clock",
   ],
   "hyprland/workspaces": {},
@@ -16,25 +18,34 @@
     "format": "{:%H:%M}",
     "tooltip": false,
   },
+  "tray": {
+    "spacing": 5,
+  },
+  "hyprland/language": {
+    "format": "kb {}",
+    "format-en": "en",
+    "format-de": "de",
+  },
+  "bluetooth": {
+    "format": "bt on",
+    "format-disabled": "bt off",
+  },
   "network": {
     "format-wifi": "net {essid}",
     "format-ethernet": "net {ipaddr}/{cidr}",
     "format-disconnected": "net disconnected",
-    "tooltip": false,
+    "tooltip-format": "{ifname} via {gwaddr}",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+    "tooltip-format-ethernet": "{ifname}",
+    "tooltip-format-disconnected": "disconnected",
   },
   "wireplumber": {
     "format": "vol {volume}%",
     "format-muted": "vol {volume}% (muted)",
-    "tooltip": false,
   },
   "battery": {
     "format": "bat {capacity}%",
     "format-charging": "bat {capacity}% (charging)",
     "format-full": "bat full",
-    "tooltip": false,
-  },
-  "custom/separator": {
-    "format": "|",
-    "tooltip": false,
   },
 }

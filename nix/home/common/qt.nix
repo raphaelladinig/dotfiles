@@ -1,6 +1,6 @@
 {
   qt = {
-    # enable = true;
+    enable = true;
     platformTheme.name = "gtk";
   };
 }

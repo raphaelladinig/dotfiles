@@ -83,20 +83,45 @@
                   name = "misc";
                   bookmarks = [
                     {
-                      name = "syncthing";
-                      url = "localhost:8384";
-                    }
-                    {
                       name = "hetzner";
                       url = "https://accounts.hetzner.com";
                     }
                     {
-                      name = "cups";
-                      url = "localhost:631";
-                    }
-                    {
                       name = "raphaelladinig";
                       url = "https://raphaelladinig.com";
+                    }
+                  ];
+                }
+                {
+                  name = "school";
+                  bookmarks = [
+                    {
+                      name = "teams";
+                      url = "https://teams.microsoft.com";
+                    }
+                    {
+                      name = "portal-tirol";
+                      url = "portal.tirol.gv.at";
+                    }
+                    {
+                      name = "digi4school";
+                      url = "https://digi4school.at";
+                    }
+                    {
+                      name = "moodle";
+                      url = "https://moodle2.htlinn.ac.at";
+                    }
+                    {
+                      name = "untis";
+                      url = "https://neilo.webuntis.com";
+                    }
+                    {
+                      name = "htlinn";
+                      url = "https://cloud.htlinn.ac.at";
+                    }
+                    {
+                      name = "letto";
+                      url = "https://letto.htlinn.ac.at";
                     }
                   ];
                 }

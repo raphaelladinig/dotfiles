@@ -9,6 +9,7 @@ progress-color=over #ffffff
 padding=7
 margin=7
 border-size=2
+default-timeout=5000
 
-[mode=dnd]
-invisible=1
+[urgency=critical]
+default-timeout=0

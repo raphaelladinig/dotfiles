@@ -18,7 +18,6 @@
     just
     pandoc
     pavucontrol
-    davinci-resolve
     nodejs
     bun
     unzip

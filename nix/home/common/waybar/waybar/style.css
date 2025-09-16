@@ -1,7 +1,7 @@
 * {
   all: unset;
   font-family: CaskaydiaCove NF;
-  font-size: 12pt;
+  font-size: 13pt;
 }
 
 window#waybar {
@@ -27,4 +27,23 @@ window#waybar {
 
 #custom-separator {
   margin: 0 0.4em;
+}
+
+#tray menu {
+  background-color: #161616;
+  color: white;
+  border: 2px solid white;
+  padding: 0.5em;
+}
+
+#tray menu menuitem:hover {
+  background-color: #303030;
+  color: white;
+}
+
+tooltip {
+  background-color: #161616;
+  color: white;
+  border: 2px solid white;
+  padding: 0.5em;
 }
