@@ -33,11 +33,6 @@ in {
         };
       };
       folders = {
-        "org" = {
-          id = "org";
-          path = "/home/raphael/org";
-          devices = ["inspiron" "sync-nbg" "pixel"];
-        };
         "Sync" = {
           id = "default";
           path = "/home/raphael/Sync";

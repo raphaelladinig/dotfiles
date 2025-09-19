@@ -29,18 +29,6 @@ in {
         };
       };
       folders = {
-        "org" = {
-          id = "org";
-          path = "/var/lib/syncthing/org";
-          versioning = {
-            type = "simple";
-            params = {
-              keep = "7";
-              cleanoutDays = "7";
-            };
-          };
-          devices = ["inspiron" "sync-nbg" "pixel"];
-        };
         "Sync" = {
           id = "default";
           path = "/var/lib/syncthing/Sync";

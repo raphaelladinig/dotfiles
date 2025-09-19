@@ -14,7 +14,6 @@ in {
     ../../ssh
     ../../virtualisation.nix
     ../../qmk.nix
-    ../../steam.nix
   ];
 
   "userSpec-${username}" = {
@@ -80,7 +79,6 @@ in {
         "Templates"
         "Videos"
 
-        "org"
         "Sync"
 
         "Dev"
@@ -97,8 +95,6 @@ in {
         ".local/share/nvim"
         ".local/state/nvim"
         ".local/state/lazygit"
-        ".steam"
-        ".local/share/Steam"
 
         ".platformio"
         ".config/tapyre"
