@@ -38,7 +38,6 @@ in
     home.packages = with pkgs; [
       dotnet
       dotnet-ef
-      android-studio
       inputs.tapyre.packages.${pkgs.system}.tapyre-astal
     ];
 
