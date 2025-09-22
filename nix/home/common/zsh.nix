@@ -1,7 +1,5 @@
 {
   pkgs,
-  hostSpec,
-  config,
   ...
 }: {
   home.file = {
@@ -64,6 +62,4 @@
     fzf
     zoxide
   ];
-
-  sops.secrets.GEMINI_API_KEY.sopsFile = "${hostSpec.secretsPath}/GEMINI_API_KEY";
 }
