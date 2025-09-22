@@ -95,6 +95,8 @@ in {
         ".local/share/nvim"
         ".local/state/nvim"
         ".local/state/lazygit"
+        ".config/JetBrains"
+        ".local/share/JetBrains"
 
         ".platformio"
         ".config/tapyre"

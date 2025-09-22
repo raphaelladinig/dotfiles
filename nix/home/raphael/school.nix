@@ -38,6 +38,7 @@ in
     home.packages = with pkgs; [
       dotnet
       dotnet-ef
+      jetbrains.idea-ultimate
       inputs.tapyre.packages.${pkgs.system}.tapyre-astal
     ];
 
