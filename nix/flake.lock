@@ -422,10 +422,10 @@
         "nixpkgs-unstable": "nixpkgs-unstable"
       },
       "locked": {
-        "lastModified": 1758469773,
-        "narHash": "sha256-XsjHi7fvrPphmTMx0j8YoA2ykTczVvh9P0CRL2LDBRc=",
+        "lastModified": 1758739230,
+        "narHash": "sha256-VzZb/fS5zQy6pRY0TF6ne9A24DkyWwaFuYKPOLFFiKo=",
         "ref": "main",
-        "rev": "3e6a713e70bcb77d84ac845fe268d9641c0eee0d",
+        "rev": "ad2e0828f08741b71793385db8a370878a1321d8",
         "shallow": true,
         "type": "git",
         "url": "ssh://git@github.com/raphaelladinig/secrets.git"
