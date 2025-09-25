@@ -77,6 +77,7 @@ in {
             xml
             bash
             rust
+            latex
           ]))
       nvim-treesitter-context
       nvim-ts-autotag
