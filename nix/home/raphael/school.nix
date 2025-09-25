@@ -39,6 +39,7 @@ in
       dotnet
       dotnet-ef
       jetbrains.idea-ultimate
+      texlive.combined.scheme-full
       inputs.tapyre.packages.${pkgs.system}.tapyre-astal
     ];
 
