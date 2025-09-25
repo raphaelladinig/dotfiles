@@ -84,8 +84,9 @@ in {
         "Dev"
         "VirtualMachines"
 
-        ".zen"
         ".ssh"
+        ".zen"
+        ".cache/zen"
         ".config/uwsm"
         ".local/state/wireplumber"
         ".local/state/syncthing"
@@ -94,11 +95,13 @@ in {
         ".local/share/DaVinciResolve"
         ".local/share/nvim"
         ".local/state/nvim"
+        ".cache/nvim"
         ".local/state/lazygit"
-        ".config/JetBrains"
-        ".local/share/JetBrains"
 
         ".platformio"
+        ".config/JetBrains"
+        ".cache/JetBrains"
+        ".local/share/JetBrains"
         ".config/tapyre"
         ".local/share/tapyre"
       ];
