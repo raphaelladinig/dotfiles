@@ -31,5 +31,6 @@
     sqlite
     docker-compose
     aider-chat
+    zathura
   ];
 }
