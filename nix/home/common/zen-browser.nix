@@ -101,7 +101,7 @@
                     }
                     {
                       name = "portal-tirol";
-                      url = "portal.tirol.gv.at";
+                      url = "https://portal.tirol.gv.at";
                     }
                     {
                       name = "digi4school";
