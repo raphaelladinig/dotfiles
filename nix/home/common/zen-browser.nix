@@ -1,3 +1,4 @@
+# doesnt work because not pkgd by nixpkgs
 {
   pkgs,
   inputs,
@@ -55,7 +56,7 @@
           "zen.view.compact.toolbar-flash-popup" = false;
           "zen.view.compact.hide-tabbar" = true;
           "zen.view.compact.hide-toolbar" = true;
-          "zen.view.use-single-toolbar" = false;
+          "zen.view.use-single-toolbar" = true;
           "zen.welcome-screen.seen" = true;
           "zen.pinned-tab-manager.restore-pinned-tabs-to-pinned-url" = true;
           "layout.spellcheckDefault" = 0;

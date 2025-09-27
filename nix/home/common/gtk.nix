@@ -6,7 +6,7 @@
       package = pkgs.gnome-themes-extra;
     };
     cursorTheme = {
-      name = "Bibata-Original-Ice";
+      name = "Bibata-Modern-Ice";
       package = pkgs.bibata-cursors;
     };
   };
