@@ -24,7 +24,7 @@
   "hyprland/language": {
     "format": "kb {}",
     "format-en": "en",
-    "format-en-colemak_dh": "cm",
+    "format-en-colemak_dh_ortho": "cm",
     "format-de": "de",
   },
   "bluetooth": {
