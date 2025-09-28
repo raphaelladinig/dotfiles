@@ -48,5 +48,12 @@ in {
 
   console = {
     earlySetup = true;
+    useXkbConfig = true;
+  };
+
+  services.xserver.xkb = {
+    layout = "us, us";
+    variant = "colemak_dh";
+    options = "grp:alt_shift_toggle";
   };
 }
