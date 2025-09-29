@@ -77,7 +77,6 @@ in {
             xml
             bash
             rust
-            latex
           ]))
       nvim-treesitter-context
       nvim-ts-autotag
@@ -86,6 +85,7 @@ in {
       render-markdown-nvim
       typst-preview-nvim
       oil-nvim
+      img-clip-nvim
       plenary-nvim
       nui-nvim
       lazydev-nvim
