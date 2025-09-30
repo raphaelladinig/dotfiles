@@ -83,6 +83,7 @@ in {
       nvim-web-devicons
       overseer-nvim
       render-markdown-nvim
+      markdown-preview-nvim
       typst-preview-nvim
       oil-nvim
       img-clip-nvim
