@@ -8,7 +8,6 @@
     ".config/hypr/vars.conf".source = ./hypr/vars.conf;
     ".config/hypr/binds.conf".source = ./hypr/binds.conf;
     ".config/hypr/hyprlock.conf".source = ./hypr/hyprlock.conf;
-    ".config/hypr/hyprsunset.conf".source = ./hypr/hyprsunset.conf;
     ".config/hypr/host-specific.conf".source = ./hypr/${hostSpec.hostName}.conf;
   };
 
@@ -37,7 +36,6 @@
 
   services = {
     hyprpolkitagent.enable = true;
-    hyprsunset.enable = true;
   };
 
   programs.hyprlock.enable = true;
