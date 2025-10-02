@@ -91,6 +91,7 @@ in {
         ".local/share/DaVinciResolve"
         ".local/share/nvim"
         ".local/state/nvim"
+        ".local/share/applications"
         ".cache/nvim"
         ".local/state/lazygit"
 
