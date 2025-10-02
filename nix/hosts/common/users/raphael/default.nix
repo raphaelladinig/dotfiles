@@ -104,6 +104,7 @@ in {
         ".local/share/JetBrains"
         ".config/tapyre"
         ".local/share/tapyre"
+        ".wine"
       ];
       files = [
         ".zsh_history"

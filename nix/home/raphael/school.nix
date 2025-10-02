@@ -40,6 +40,7 @@ in
       dotnet-ef
       jetbrains.idea-ultimate
       inputs.tapyre.packages.${pkgs.system}.tapyre-astal
+      wineWowPackages.stable
     ];
 
     home.sessionVariables = {
