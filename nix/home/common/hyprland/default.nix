@@ -39,4 +39,16 @@
   };
 
   programs.hyprlock.enable = true;
+
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "application/pdf" = ["zen-beta.desktop"];
+      "image/jpeg" = ["zen-beta.desktop"];
+      "image/png" = ["zen-beta.desktop"];
+      "image/gif" = ["zen-beta.desktop"];
+      "image/webp" = ["zen-beta.desktop"];
+      "image/svg+xml" = ["zen-beta.desktop"];
+    };
+  };
 }
