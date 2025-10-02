@@ -61,10 +61,6 @@ in {
         authfile = "/home/raphael/.config/Yubico/u2f_keys";
       };
     };
-    services = {
-      login.u2fAuth = false;
-      sudo.u2fAuth = true;
-    };
   };
 
   environment.persistence."/persist" = {
