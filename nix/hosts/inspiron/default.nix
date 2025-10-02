@@ -21,10 +21,6 @@ in {
     school = true;
   };
 
-  services.logind.settings.Login = {
-    HandlePowerKey = "ignore";
-  };
-
   sops.secrets = {
     Cristallo = {
       sopsFile = "${secretsPath}/Cristallo.nmconnection";
