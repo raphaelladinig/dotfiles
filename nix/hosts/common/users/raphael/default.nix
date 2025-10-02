@@ -92,6 +92,9 @@ in {
         ".local/share/nvim"
         ".local/state/nvim"
         ".local/share/applications"
+        ".local/share/icons"
+        ".local/share/desktop-directories"
+        ".local/share/mime"
         ".cache/nvim"
         ".local/state/lazygit"
 
