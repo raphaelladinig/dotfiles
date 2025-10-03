@@ -5,7 +5,6 @@
   "modules-center": [],
   "modules-right": [
     "tray",
-    "hyprland/language",
     "custom/notifications",
     "bluetooth",
     "network",
@@ -20,12 +19,6 @@
   },
   "tray": {
     "spacing": 5,
-  },
-  "hyprland/language": {
-    "format": "kb {}",
-    "format-en": "en",
-    "format-en-colemak_dh_ortho": "cm",
-    "format-de": "de",
   },
   "bluetooth": {
     "format": "bt on",
