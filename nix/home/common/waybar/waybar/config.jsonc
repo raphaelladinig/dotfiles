@@ -5,7 +5,7 @@
   "modules-center": [],
   "modules-right": [
     "tray",
-    "custom/notifications",
+    "hyprland/language",
     "bluetooth",
     "network",
     "wireplumber",
@@ -16,6 +16,12 @@
   "clock": {
     "format": "{:%H:%M}",
     "tooltip": false,
+  },
+  "hyprland/language": {
+    "format": "kb {}",
+    "format-en": "en",
+    "format-en-colemak_dh_ortho": "cm",
+    "format-de": "de",
   },
   "tray": {
     "spacing": 5,

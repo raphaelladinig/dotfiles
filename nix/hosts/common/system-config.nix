@@ -52,8 +52,7 @@ in {
   };
 
   services.xserver.xkb = {
-    layout = "us, us";
+    layout = "us";
     variant = "colemak_dh_ortho";
-    options = "grp:alt_space_toggle";
   };
 }
