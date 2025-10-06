@@ -99,6 +99,7 @@ in {
         ".local/state/lazygit"
 
         ".platformio"
+        ".java"
         ".config/JetBrains"
         ".cache/JetBrains"
         ".local/share/JetBrains"
