@@ -20,16 +20,28 @@ format-disk arg:
 
   sudo disko --mode disko "$file"
 
+alias fd := format-disk
+
 install host="${HOSTNAME}":
   sudo nixos-install --no-root-passwd --flake .#{{host}}
+
+alias i := install
 
 update: 
   nix flake update
 
+alias u := update
+
 clean: clean-persist collect-garbage
+
+alias c := clean
 
 clean-persist:
   sudo PERSIST_DIRS="$PERSIST_DIRS" PERSIST_FILES="$PERSIST_FILES" ./scripts/clean-persist.sh
 
+alias cp := clean-persist
+
 collect-garbage:
   sudo nix-collect-garbage --delete-older-than 7d
+
+alias cg := collect-garbage
