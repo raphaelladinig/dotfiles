@@ -34,6 +34,10 @@ in {
       sopsFile = "${secretsPath}/HTLinn.nmconnection";
       path = "/etc/NetworkManager/system-connections/HTLinn.nmconnection";
     };
+    pixel = {
+      sopsFile = "${secretsPath}/pixel.nmconnection";
+      path = "/etc/NetworkManager/system-connections/pixel.nmconnection";
+    };
   };
 
   boot.initrd.availableKernelModules = [
