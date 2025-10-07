@@ -1,6 +1,5 @@
 {
   pkgs,
-  inputs,
   ...
 }: {
   imports = [
@@ -10,6 +9,7 @@
     ./school.nix
     ./ssh.nix
     ./syncthing.nix
+    ./localsend.nix
     ../common/hyprland
   ];
 

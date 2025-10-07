@@ -54,6 +54,8 @@ in {
 
   programs.zsh.enable = true;
 
+  programs.localsend.enable = true;
+
   security.pam = {
     u2f = {
       enable = true;
