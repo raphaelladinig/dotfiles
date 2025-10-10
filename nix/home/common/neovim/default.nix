@@ -26,7 +26,6 @@ in {
     enable = true;
     package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
     plugins = with pkgs.vimPlugins; [
-      aerial-nvim
       blink-cmp
       conform-nvim
       diffview-nvim
@@ -39,13 +38,16 @@ in {
       friendly-snippets
       catppuccin-nvim
       nvim-autopairs
-      nvim-dap
-      nvim-dap-ui
-      nvim-dap-virtual-text
-      nvim-nio
-      nvim-lint
       nvim-lspconfig
       nvim-surround
+      nvim-web-devicons
+      render-markdown-nvim
+      markdown-preview-nvim
+      typst-preview-nvim
+      oil-nvim
+      img-clip-nvim
+      lazydev-nvim
+      rustaceanvim
       (nvim-treesitter.withPlugins
         (p:
           with p; [
@@ -78,19 +80,7 @@ in {
             bash
             rust
           ]))
-      nvim-treesitter-context
       nvim-ts-autotag
-      nvim-web-devicons
-      overseer-nvim
-      render-markdown-nvim
-      markdown-preview-nvim
-      typst-preview-nvim
-      oil-nvim
-      img-clip-nvim
-      plenary-nvim
-      nui-nvim
-      lazydev-nvim
-      rustaceanvim
     ];
   };
 

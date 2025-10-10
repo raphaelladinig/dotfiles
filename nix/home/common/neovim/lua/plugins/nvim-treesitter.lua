@@ -31,7 +31,3 @@ require("nvim-treesitter.configs").setup({
 })
 
 require("nvim-ts-autotag").setup()
-
-require("treesitter-context").setup({
-  max_lines = 3,
-})

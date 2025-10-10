@@ -21,6 +21,6 @@ require("conform").setup({
   },
 })
 
-vim.keymap.set({ "n", "v" }, "<leader>mp", function()
+vim.keymap.set({ "n", "v" }, "<leader>c", function()
   require("conform").format()
 end)
