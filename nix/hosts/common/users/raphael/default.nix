@@ -102,6 +102,7 @@ in {
 
         ".platformio"
         ".java"
+        ".ollama"
         ".config/JetBrains"
         ".cache/JetBrains"
         ".local/share/JetBrains"

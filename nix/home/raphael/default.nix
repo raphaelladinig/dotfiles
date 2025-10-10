@@ -32,5 +32,6 @@
     docker-compose
     bluetuith
     gemini-cli
+    ollama
   ];
 }
