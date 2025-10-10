@@ -30,7 +30,7 @@
     pnpm
     sqlite
     docker-compose
-    aider-chat
     bluetuith
+    gemini-cli
   ];
 }
