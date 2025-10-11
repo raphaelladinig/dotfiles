@@ -25,7 +25,7 @@
   imports = [
     ../rofi
     ../mako
-    ../alacritty
+    ../kitty
     ../mpv
     ../wireplumber
     ../waybar

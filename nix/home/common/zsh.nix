@@ -35,7 +35,6 @@
 
       alias v="nvim"
       alias g="lazygit"
-      alias t="tmux"
       alias j="just"
 
       eval "$(direnv hook zsh)"
@@ -49,7 +48,6 @@
     ./lazygit
     ./neovim
     ./btop
-    ./tmux
   ];
 
   programs = {
