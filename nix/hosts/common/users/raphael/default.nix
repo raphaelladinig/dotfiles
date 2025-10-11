@@ -86,8 +86,8 @@ in {
         "Videos"
 
         "Sync"
-
         "Dev"
+
         "VirtualMachines"
 
         ".ssh"

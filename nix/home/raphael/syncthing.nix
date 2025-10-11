@@ -38,6 +38,11 @@ in {
           path = "/home/raphael/Sync";
           devices = ["inspiron" "sync-nbg" "pixel"];
         };
+        "Dev" = {
+          id = "Dev";
+          path = "/home/raphael/Dev";
+          devices = ["inspiron" "sync-nbg"];
+        };
       };
     };
   };
