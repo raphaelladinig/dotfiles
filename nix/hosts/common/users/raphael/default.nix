@@ -56,6 +56,14 @@ in {
 
   programs.localsend.enable = true;
 
+  services.getty.autologinUser = "raphael";
+
+  environment.loginShellInit = ''
+    if [ "$(tty)" = "/dev/tty1" ]; then
+      uwsm start default
+    fi
+  '';
+
   security.pam = {
     u2f = {
       enable = true;
