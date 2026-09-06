@@ -1,0 +1,4 @@
+interface:
+  display_name: "HTML communication"
+  short_description: "Explain complex topics with self-contained HTML"
+  default_prompt: "Use $html-communication to turn this explanation into a clear, self-contained HTML document."
