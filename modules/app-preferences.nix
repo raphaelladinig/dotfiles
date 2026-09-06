@@ -17,6 +17,7 @@
             command:
             ''launchctl asuser "''$${prefix}_user_id" sudo --user="''$${prefix}_user" --set-home -- ${command}'';
           valueString = value: if builtins.isBool value then if value then "1" else "0" else toString value;
+          writeValueString = value: if builtins.isBool value then lib.boolToString value else toString value;
           valueType =
             value:
             if builtins.isBool value then
@@ -58,7 +59,7 @@
               ${lib.concatStringsSep "\n" (
                 lib.mapAttrsToList (
                   name: value:
-                  run "/usr/bin/defaults write ${lib.escapeShellArg domain} ${lib.escapeShellArg name} ${valueType value} ${lib.escapeShellArg (valueString value)}"
+                  run "/usr/bin/defaults write ${lib.escapeShellArg domain} ${lib.escapeShellArg name} ${valueType value} ${lib.escapeShellArg (writeValueString value)}"
                 ) preferences
               )}
             fi
