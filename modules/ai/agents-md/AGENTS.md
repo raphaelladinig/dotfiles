@@ -3,6 +3,13 @@
 Treat this file as global defaults. When project-level `AGENTS.md` instructions
 conflict with this file, follow the project-level instructions.
 
+## Questions and changes
+
+Treat questions as requests for information. Answer the question without changing
+files, configuration, or external state. Read-only investigation is fine when
+needed to answer accurately. Wait for an explicit request to make changes before
+implementing a suggestion or solution discussed in a question.
+
 ## Commit messages
 
 Use Conventional Commits by default unless the repository explicitly requires
