@@ -64,6 +64,14 @@ in
     {
       dotfiles.orion.enable = lib.mkDefault true;
 
+      home.activation.remindOrionExtensions = lib.mkIf config.dotfiles.orion.enable (
+        config.lib.dag.entryAfter [ "linkGeneration" ] ''
+          ${pkgs.python3}/bin/python3 ${./check-extensions.py} \
+            ${./extensions.csv} \
+            ${lib.escapeShellArg "${config.home.homeDirectory}/Library/Application Support/Orion/Defaults/Extensions"}
+        ''
+      );
+
       home.file."Library/Application Support/Orion/NativeMessagingHosts/org.keepassxc.keepassxc_browser.json" =
         lib.mkIf (config.dotfiles.orion.enable && config.dotfiles.keepassxc.enable) {
           source = (pkgs.formats.json { }).generate "org.keepassxc.keepassxc_browser.json" {

@@ -41,6 +41,10 @@ skipping open apps and telling the user to quit and reapply. For app-owned
 configuration files, follow `modules/apps/keepassxc.nix`: merge managed keys
 while preserving other settings and skip writes while the app is running.
 
+Orion's activation reminder reads `modules/apps/orion/extensions.csv` and checks
+the default profile for the listed Firefox extension IDs. Keep that CSV updated when
+adding or removing manually installed extensions.
+
 Git signs commits and tags with the SSH public key in `modules/apps/git.nix`.
 KeePassXC must load the matching private key into the SSH agent before committing.
 

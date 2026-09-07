@@ -5,6 +5,9 @@ Home Manager, and Den.
 
 The checkout is expected at `~/Projects/dotfiles`.
 
+See [Orion extensions](modules/apps/orion/extensions.csv) for the manually installed browser
+extensions to restore on a new machine.
+
 GitHub Actions checks formatting and syntax, validates both flakes, and builds
 the `sol` configuration on pull requests and pushes to `main`. The workflow can
 also be run manually. It does not activate the configuration.
