@@ -67,6 +67,14 @@ and manual dispatch. It runs `just check`, validates the Nix base template, and
 builds `sol` on an Apple Silicon macOS runner without activation. Keep these
 steps in sync with the validation recipes.
 
+`.github/workflows/update.yml` runs `just update` every Monday at 07:23 UTC
+and on manual dispatch. It updates the main `flake.lock`, runs the same checks
+and build, and opens or updates one PR for manual merging. It leaves the
+template lockfile and stable release pin unchanged. Enable "Allow GitHub
+Actions to create and approve pull requests" in the repository settings.
+PRs created with `GITHUB_TOKEN` do not trigger the check workflow, so the update
+workflow validates changes before opening the PR.
+
 The reusable Nix base lives in `modules/templates/_nix-base` and is exposed
 through `modules/templates/default.nix`. Keep the template under `_nix-base/` so
 import-tree excludes its modules from the parent flake. Keep it general, without

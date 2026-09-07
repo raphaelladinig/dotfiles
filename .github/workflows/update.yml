@@ -1,0 +1,66 @@
+name: Update dependencies
+
+on:
+  schedule:
+    - cron: '23 7 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: update-dependencies
+  cancel-in-progress: false
+
+jobs:
+  update:
+    name: Update, check, and build sol
+    runs-on: macos-15
+    timeout-minutes: 60
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+
+      - name: Install Nix
+        uses: nixbuild/nix-quick-install-action@9f63be77f412a248c9d9a65a4c82cf066cdf8f0c # v35
+
+      - name: Update dependencies
+        id: update
+        run: |
+          nix develop --command just update
+          if git diff --quiet -- flake.lock; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Check configuration
+        if: steps.update.outputs.changed == 'true'
+        run: nix develop --command just check
+
+      - name: Check Nix base template
+        if: steps.update.outputs.changed == 'true'
+        run: nix flake check path:./modules/templates/_nix-base
+
+      - name: Build sol
+        if: steps.update.outputs.changed == 'true'
+        run: nix develop --command just build sol
+
+      - name: Open or update pull request
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8
+        with:
+          branch: automation/update-dependencies
+          delete-branch: true
+          commit-message: 'chore(nix): update flake dependencies'
+          title: 'chore(nix): update flake dependencies'
+          body: |
+            Runs `just update` to refresh the main flake's locked dependencies.
+
+            Validation passed in the update workflow: `just check`, the Nix base template check, and `just build sol`.
+
+            Review and merge manually, then apply the configuration when ready.
+          add-paths: flake.lock
