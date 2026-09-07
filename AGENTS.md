@@ -27,6 +27,8 @@ Follow these conventions when changing configuration:
   arguments inside that module's function.
 - Keep app packages and configuration together under `modules/apps/`.
   Declare shared dependencies through the app aspect's `includes`.
+- Keep shared nixpkgs settings in `modules/nixpkgs.nix`; its `perSystem` package
+  set and Darwin aspect use the same configuration and overlays.
 - Declare cross-aspect `dotfiles.*` flags in `modules/defaults.nix` so consumers
   can read them when the providing aspect is absent. Follow the KeePassXC flag
   pattern. Keep feature-local options in their owning module.
@@ -59,3 +61,11 @@ Use the recipes in `justfile` for validation and activation:
   including removal of packages absent from the declared configuration.
 - For documentation-only edits, review the diff and verify referenced paths and
   commands. A Nix rebuild is unnecessary.
+
+The reusable Nix base lives in `modules/templates/_nix-base` and is exposed
+through `modules/templates/default.nix`. Keep the template under `_nix-base/` so
+import-tree excludes its modules from the parent flake. Keep it general, without
+host, user, or OS-specific declarations. Define template Nix settings through
+`flake-file.nixConfig` and package configuration through `perSystem`. Run its `just write-flake`
+from that directory when changing its dependency declarations. Validate it with
+`nix flake check path:./modules/templates/_nix-base`.

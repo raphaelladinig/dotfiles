@@ -1,0 +1,16 @@
+default:
+    @just --list
+
+alias c := check
+alias u := update
+alias w := write-flake
+
+check:
+    nix fmt -- --check $(find . -name '*.nix' -type f -print)
+    nix flake check
+
+update:
+    nix flake update
+
+write-flake:
+    nix run .#write-flake
