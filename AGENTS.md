@@ -75,8 +75,9 @@ and on manual dispatch. It updates the main `flake.lock`, runs the same checks
 and build, and opens or updates one PR for manual merging. It leaves the
 template lockfile and stable release pin unchanged. Enable "Allow GitHub
 Actions to create and approve pull requests" in the repository settings.
-PRs created with `GITHUB_TOKEN` do not trigger the check workflow, so the update
-workflow validates changes before opening the PR.
+PRs created or updated with `GITHUB_TOKEN` trigger check workflow runs that
+require approval. The update workflow validates changes before opening or
+updating the PR.
 
 The reusable Nix base lives in `modules/templates/_nix-base` and is exposed
 through `modules/templates/default.nix`. Keep the template under `_nix-base/` so
