@@ -69,6 +69,8 @@ GitHub Actions runs `.github/workflows/check.yml` on pull requests, pushes to `m
 and manual dispatch. It runs `just check`, validates the Nix base template, and
 builds `sol` on an Apple Silicon macOS runner without activation. Keep these
 steps in sync with the validation recipes.
+Check runs in the same concurrency group run one at a time and queue up to 100
+pending runs with `queue: max`.
 
 `.github/workflows/update.yml` runs `just update` every Monday at 07:23 UTC
 and on manual dispatch. It updates the main `flake.lock`, runs the same checks
