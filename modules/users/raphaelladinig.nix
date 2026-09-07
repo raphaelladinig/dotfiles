@@ -7,6 +7,7 @@
       den.aspects.homebrew
       den.aspects.apps.alcove
       den.aspects.apps.cmux
+      den.aspects.apps.git
       den.aspects.apps.keepassxc
       den.aspects.apps.lazygit
       den.aspects.apps.neovim
