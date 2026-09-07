@@ -67,13 +67,6 @@ and manual dispatch. It runs `just check`, validates the Nix base template, and
 builds `sol` on an Apple Silicon macOS runner without activation. Keep these
 steps in sync with the validation recipes.
 
-`.github/workflows/update-nixpkgs-stable.yml` checks published nixpkgs release
-tags every Monday and on manual dispatch. When a newer stable release exists,
-it updates the main flake and Nix base template through their source modules,
-regenerates both flakes, updates only their stable inputs, and validates before
-opening a pull request. The repository must allow GitHub Actions to create pull
-requests. These PRs use `GITHUB_TOKEN`, so validation runs in the update workflow.
-
 The reusable Nix base lives in `modules/templates/_nix-base` and is exposed
 through `modules/templates/default.nix`. Keep the template under `_nix-base/` so
 import-tree excludes its modules from the parent flake. Keep it general, without
