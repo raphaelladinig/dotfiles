@@ -42,6 +42,9 @@ skipping open apps and telling the user to quit and reapply. For app-owned
 configuration files, follow `modules/apps/keepassxc.nix`: merge managed keys
 while preserving other settings and skip writes while the app is running.
 
+Git signs commits and tags with the SSH public key in `modules/apps/git.nix`.
+KeePassXC must load the matching private key into the SSH agent before committing.
+
 For Neovim changes, read `modules/apps/neovim/default.nix` and `init.lua` before
 adding a feature. Feature modules contribute files through
 `dotfiles.neovim.configFiles`; `init.lua` discovers the linked Lua modules.
