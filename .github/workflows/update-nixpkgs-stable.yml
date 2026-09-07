@@ -1,0 +1,62 @@
+name: Update stable nixpkgs release
+
+on:
+  schedule:
+    - cron: '23 7 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: update-nixpkgs-stable
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: macos-15
+    timeout-minutes: 60
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - name: Install Nix
+        uses: nixbuild/nix-quick-install-action@9f63be77f412a248c9d9a65a4c82cf066cdf8f0c # v35
+
+      - name: Update to latest published stable release
+        id: update
+        run: nix develop --command python3 .github/scripts/update-nixpkgs-stable.py
+
+      - name: Check configuration
+        if: steps.update.outputs.changed == 'true'
+        run: nix develop --command just check
+
+      - name: Check Nix base template
+        if: steps.update.outputs.changed == 'true'
+        run: nix flake check path:./modules/templates/_nix-base
+
+      - name: Build sol
+        if: steps.update.outputs.changed == 'true'
+        run: nix develop --command just build sol
+
+      - name: Open update pull request
+        if: steps.update.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8
+        with:
+          branch: automation/update-nixpkgs-stable
+          commit-message: 'chore(nix): update stable nixpkgs to ${{ steps.update.outputs.release }}'
+          title: 'chore(nix): update stable nixpkgs to ${{ steps.update.outputs.release }}'
+          body: |
+            Updates stable nixpkgs to the latest published release in the main flake and Nix base template.
+
+            Validation: `just check`, template flake check, and `just build sol` ran in the update workflow.
+          add-paths: |
+            modules/nixpkgs.nix
+            flake.nix
+            flake.lock
+            modules/templates/_nix-base/modules/nixpkgs.nix
+            modules/templates/_nix-base/flake.nix
+            modules/templates/_nix-base/flake.lock
