@@ -1,9 +1,9 @@
 { ... }:
 {
   den.aspects.ai.agents-md.homeManager =
-    { config, repoRoot, ... }:
+    { ... }:
     let
-      instructions = config.lib.file.mkOutOfStoreSymlink "${repoRoot}/modules/ai/agents-md/AGENTS.md";
+      instructions = ./AGENTS.md;
     in
     {
       home.file = {

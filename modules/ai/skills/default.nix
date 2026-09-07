@@ -2,9 +2,7 @@
 {
   den.aspects.ai.skills.homeManager =
     {
-      config,
       lib,
-      repoRoot,
       ...
     }:
     let
@@ -23,7 +21,7 @@
             directory:
             lib.mapAttrsToList (name: _: {
               name = "${directory}/${name}";
-              value.source = config.lib.file.mkOutOfStoreSymlink "${repoRoot}/modules/ai/skills/${name}";
+              value.source = ./. + "/${name}";
             }) skills
           ) skillDirectories
         )

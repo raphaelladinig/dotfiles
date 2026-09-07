@@ -32,6 +32,7 @@
       "obs"
       "petrichor"
       "soulseek"
+      "tailscale-app"
       "vicinae"
       "wispr-flow"
       "equinox"

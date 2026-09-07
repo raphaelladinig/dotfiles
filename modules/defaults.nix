@@ -8,7 +8,6 @@
   den.default.darwin.system.stateVersion = 6;
   den.default.homeManager =
     {
-      config,
       lib,
       user,
       ...
@@ -38,10 +37,7 @@
         };
       };
 
-      config = {
-        _module.args.repoRoot = "${config.home.homeDirectory}/Projects/dotfiles";
-        home.stateVersion = "26.05";
-      };
+      config.home.stateVersion = "26.05";
     };
 
   den.schema.user.classes = lib.mkDefault [ "homeManager" ];

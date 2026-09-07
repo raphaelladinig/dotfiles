@@ -32,9 +32,8 @@ Follow these conventions when changing configuration:
 - Declare cross-aspect `dotfiles.*` flags in `modules/defaults.nix` so consumers
   can read them when the providing aspect is absent. Follow the KeePassXC flag
   pattern. Keep feature-local options in their owning module.
-- Use `repoRoot` for links into this checkout. `modules/defaults.nix` sets it to
-  `~/Projects/dotfiles`. Fish and Neovim use out-of-store links, so edits to
-  existing linked files can affect the running setup before a rebuild.
+- Fish, Neovim, AI skills, and agent instructions use Nix-managed files through
+  `home.file` with relative source paths. Edits require a rebuild and activation.
 
 For macOS app preferences, use `dotfiles.appPreferences` from
 `modules/app-preferences.nix` for scalar defaults. Preserve its behavior of

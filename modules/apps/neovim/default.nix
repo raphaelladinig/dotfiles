@@ -31,19 +31,15 @@
     {
       config,
       lib,
-      repoRoot,
       ...
     }:
-    let
-      aspectRoot = "${repoRoot}/modules/apps/neovim";
-    in
     {
       options.dotfiles.neovim = {
         configFiles = lib.mkOption {
           type = lib.types.attrsOf lib.types.str;
           default = { };
           description = ''
-            Config files linked out-of-store into ~/.config/nvim. Keys are
+            Config files managed through the Nix store in ~/.config/nvim. Keys are
             target paths relative to ~/.config/nvim, values are source paths
             relative to the neovim aspect directory. Each module contributes
             only its own files; init.lua loads whatever ends up linked.
@@ -60,13 +56,13 @@
       config = {
         dotfiles.neovim.configFiles."lua/my/settings.lua" = "settings.lua";
 
-        xdg.configFile =
+        home.file =
           lib.mapAttrs' (target: source: {
-            name = "nvim/${target}";
-            value.source = config.lib.file.mkOutOfStoreSymlink "${aspectRoot}/${source}";
+            name = "${config.xdg.configHome}/nvim/${target}";
+            value.source = ./. + "/${source}";
           }) config.dotfiles.neovim.configFiles
           // {
-            "nvim/lua/my/features.lua".text = ''
+            "${config.xdg.configHome}/nvim/lua/my/features.lua".text = ''
               return {
                 lsp = ${lib.boolToString config.dotfiles.neovim.lsp.enable},
                 formatting = ${lib.boolToString config.dotfiles.neovim.formatting.enable},
@@ -81,9 +77,7 @@
         programs.neovim = {
           enable = true;
           defaultEditor = true;
-          initLua = ''
-            dofile("${aspectRoot}/init.lua")
-          '';
+          initLua = builtins.readFile ./init.lua;
         };
       };
     };

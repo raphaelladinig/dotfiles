@@ -18,12 +18,10 @@
         config,
         lib,
         pkgs,
-        repoRoot,
         ...
       }:
       {
-        xdg.configFile."fish/config.fish".source =
-          config.lib.file.mkOutOfStoreSymlink "${repoRoot}/modules/apps/fish/config/config.fish";
+        home.file."${config.xdg.configHome}/fish/config.fish".source = ./config/config.fish;
 
         xdg.configFile."fish/conf.d/app-aliases.fish".text =
           lib.optionalString (lib.any (package: lib.getName package == "just") config.home.packages) ''
