@@ -8,10 +8,6 @@
   ];
 
   flake-file.outputs = lib.mkDefault "dendritic";
-  flake-file.nixConfig.extra-experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
   flake.modules = { };
   systems = lib.mkDefault lib.systems.flakeExposed;
 
