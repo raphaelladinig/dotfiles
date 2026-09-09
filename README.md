@@ -10,9 +10,11 @@ Current profile settings are declared in `modules/apps/helium/preferences.json`
 and `local-state.json`. Activation merges these settings while Helium is closed,
 preserving other profile data. The app module also declares updater preferences
 and DuckDuckGo as the recommended search provider, which browser choices can override.
-Install the extensions in [the Helium inventory](modules/apps/helium/extensions.csv)
-from the Chrome Web Store. Activation reminds you about missing extensions in the
-default profile. Connect KeePassXC-Browser to your database after installation.
+The [Helium extension list](modules/apps/helium/extensions.csv) declares extensions
+for automatic installation through the macOS `ExtensionInstallForcelist` policy
+and toolbar pins through `ExtensionSettings`.
+Quit Helium before activation, then reopen it to install the extensions.
+Connect KeePassXC-Browser to your database after installation.
 
 GitHub Actions checks formatting and syntax, validates both flakes, and builds
 the `sol` configuration on pull requests and pushes to `main`. The workflow can

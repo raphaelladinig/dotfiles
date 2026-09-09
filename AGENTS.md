@@ -43,12 +43,16 @@ while preserving other settings and skip writes while the app is running.
 
 Helium's `preferences.json` and `local-state.json` contain curated settings, not
 profile exports. Keep account data, history, identifiers, and extension state out
-of these files. Activation merges them only while Helium is closed. Search uses
+of these files. Darwin activation merges them as the primary user only while Helium
+is closed. All Helium preference writers run in the same activation shell so the
+shared warning helper emits one reminder per app. Search uses
 macOS recommended policies to avoid editing protected search preferences.
 
-Helium's activation reminder reads `modules/apps/helium/extensions.csv` and checks
-the default profile for installed Chromium extension manifests. Keep the CSV updated
-when adding or removing manually installed extensions.
+Helium's `extensions.csv` is the source for its macOS `ExtensionInstallForcelist`
+and `ExtensionSettings` toolbar pins. Blank pin values preserve existing settings.
+Darwin activation merges that list into the primary user's managed preferences
+while Helium is closed, preserving other policy keys. Keep the CSV updated when
+adding or removing forced extensions.
 
 Git signs commits and tags with the SSH public key in `modules/apps/git.nix`.
 KeePassXC must load the matching private key into the SSH agent before committing.
