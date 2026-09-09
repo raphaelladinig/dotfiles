@@ -3,13 +3,6 @@
 {
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 
-  nixConfig = {
-    extra-experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
-  };
-
   inputs = {
     den.url = "github:denful/den";
     flake-file.url = "github:vic/flake-file";
