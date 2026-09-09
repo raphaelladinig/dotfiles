@@ -44,6 +44,7 @@
 
     darwin.homebrew.masApps = {
       "Brother iPrint&Scan" = 1193539993;
+      "Xcode" = 497799835;
     };
 
     homeManager =
