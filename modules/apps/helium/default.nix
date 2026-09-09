@@ -20,6 +20,7 @@
         command:
         ''launchctl asuser "$(id -u -- ${lib.escapeShellArg user})" sudo --user=${lib.escapeShellArg user} --set-home -- ${command}'';
       policyFile = "/Library/Managed Preferences/${user}/net.imput.helium.plist";
+      extensionPython = pkgs.python3.withPackages (ps: [ ps.plyvel ]);
     in
     {
       homebrew.casks = [ "helium-browser" ];
@@ -46,6 +47,8 @@
             ${lib.escapeShellArg "${userDataDir}/Default/Preferences"} ${./preferences.json}
           ${asUser "${pkgs.python3}/bin/python3 ${./apply-preferences.py}"} \
             ${lib.escapeShellArg "${userDataDir}/Local State"} ${./local-state.json}
+          ${asUser "${extensionPython}/bin/python3 ${./apply-dark-reader.py}"} \
+            ${lib.escapeShellArg "${userDataDir}/Default"}
           ${pkgs.python3}/bin/python3 ${./apply-extension-policy.py} \
             ${lib.escapeShellArg policyFile} ${./extensions.csv}
         fi

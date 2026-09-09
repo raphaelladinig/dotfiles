@@ -54,6 +54,11 @@ Darwin activation merges that list into the primary user's managed preferences
 while Helium is closed, preserving other policy keys. Keep the CSV updated when
 adding or removing forced extensions.
 
+Helium's `apply-dark-reader.py` sets Dark Reader to "Invert listed only" in
+the Default profile's local and sync extension stores while Helium is closed.
+It preserves site lists and other settings. It also sets the legacy mode key
+when needed so Dark Reader's first-run migration preserves the declared mode.
+
 Git signs commits and tags with the SSH public key in `modules/apps/git.nix`.
 KeePassXC must load the matching private key into the SSH agent before committing.
 
