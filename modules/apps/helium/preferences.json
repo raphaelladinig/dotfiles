@@ -1,0 +1,41 @@
+{
+  "helium": {
+    "browser": {
+      "layout": 2,
+      "vertical_right_aligned": true,
+      "zen_mode": false
+    },
+    "services": {
+      "disable_schema_alerts": true,
+      "enabled": true,
+      "ext_proxy": true
+    }
+  },
+  "browser": {
+    "theme": {
+      "is_grayscale2": true
+    }
+  },
+  "vertical_tabs": {
+    "collapsed_state": false,
+    "uncollapsed_width": 223
+  },
+  "spellcheck": {
+    "dictionaries": [
+      "en-US"
+    ]
+  },
+  "intl": {
+    "selected_languages": "en-US,en"
+  },
+  "ntp": {
+    "custom_links_visible": false,
+    "shortcuts_visible": true,
+    "shortcuts_auto_removal_disabled": true
+  },
+  "accessibility": {
+    "captions": {
+      "headless_caption_enabled": false
+    }
+  }
+}

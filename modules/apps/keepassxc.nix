@@ -20,8 +20,8 @@
         };
 
         Browser = {
-          AlwaysAllowAccess = config.dotfiles.orion.enable;
-          Enabled = config.dotfiles.orion.enable;
+          AlwaysAllowAccess = config.dotfiles.helium.enable;
+          Enabled = config.dotfiles.helium.enable;
           UpdateBinaryPath = false;
         };
 

@@ -8,10 +8,10 @@
       den.aspects.apps.alcove
       den.aspects.apps.cmux
       den.aspects.apps.git
+      den.aspects.apps.helium
       den.aspects.apps.keepassxc
       den.aspects.apps.lazygit
       den.aspects.apps.neovim
-      den.aspects.apps.orion
       den.aspects.apps.fish
       den.aspects.ai.agents-md
       den.aspects.ai.skills

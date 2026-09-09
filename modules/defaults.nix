@@ -25,8 +25,8 @@
       # another aspect's flag without requiring that aspect to be included.
       # A flag is effective only while its providing aspect is included.
       options.dotfiles = {
+        helium.enable = mkAspectEnableOption "Helium" den.aspects.apps.helium;
         keepassxc.enable = mkAspectEnableOption "KeePassXC" den.aspects.apps.keepassxc;
-        orion.enable = mkAspectEnableOption "Orion" den.aspects.apps.orion;
         neovim = {
           dap.enable = mkAspectEnableOption "Neovim DAP" den.aspects.apps.neovim.dap;
           editing.enable = mkAspectEnableOption "Neovim editing helpers" den.aspects.apps.neovim.editing;

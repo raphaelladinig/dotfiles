@@ -41,9 +41,14 @@ skipping open apps and telling the user to quit and reapply. For app-owned
 configuration files, follow `modules/apps/keepassxc.nix`: merge managed keys
 while preserving other settings and skip writes while the app is running.
 
-Orion's activation reminder reads `modules/apps/orion/extensions.csv` and checks
-the default profile for the listed Firefox extension IDs. Keep that CSV updated when
-adding or removing manually installed extensions.
+Helium's `preferences.json` and `local-state.json` contain curated settings, not
+profile exports. Keep account data, history, identifiers, and extension state out
+of these files. Activation merges them only while Helium is closed. Search uses
+macOS recommended policies to avoid editing protected search preferences.
+
+Helium's activation reminder reads `modules/apps/helium/extensions.csv` and checks
+the default profile for installed Chromium extension manifests. Keep the CSV updated
+when adding or removing manually installed extensions.
 
 Git signs commits and tags with the SSH public key in `modules/apps/git.nix`.
 KeePassXC must load the matching private key into the SSH agent before committing.

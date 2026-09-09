@@ -1,0 +1,7 @@
+{
+  "browser": {
+    "enabled_labs_experiments": [
+      "close-window-with-last-tab@1"
+    ]
+  }
+}

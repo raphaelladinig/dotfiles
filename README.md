@@ -5,8 +5,14 @@ Home Manager, and Den.
 
 The checkout is expected at `~/Projects/dotfiles`.
 
-See [Orion extensions](modules/apps/orion/extensions.csv) for the manually installed browser
-extensions to restore on a new machine.
+Helium is the configured browser, with KeePassXC native messaging integration.
+Current profile settings are declared in `modules/apps/helium/preferences.json`
+and `local-state.json`. Activation merges these settings while Helium is closed,
+preserving other profile data. The app module also declares updater preferences
+and DuckDuckGo as the recommended search provider, which browser choices can override.
+Install the extensions in [the Helium inventory](modules/apps/helium/extensions.csv)
+from the Chrome Web Store. Activation reminds you about missing extensions in the
+default profile. Connect KeePassXC-Browser to your database after installation.
 
 GitHub Actions checks formatting and syntax, validates both flakes, and builds
 the `sol` configuration on pull requests and pushes to `main`. The workflow can
