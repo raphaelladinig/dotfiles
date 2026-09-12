@@ -35,6 +35,11 @@ Follow these conventions when changing configuration:
 - Fish, Neovim, AI skills, and agent instructions use Nix-managed files through
   `home.file` with relative source paths. Edits require a rebuild and activation.
 
+`modules/nix-settings.nix` schedules Nix garbage collection daily at 04:00
+local time. It deletes generations older than 30 days and collects unreferenced
+store paths. The current generation remains protected. The same job runs store
+optimisation after garbage collection succeeds to deduplicate identical files.
+
 For macOS app preferences, use `dotfiles.appPreferences` from
 `modules/app-preferences.nix` for scalar defaults. Preserve its behavior of
 skipping open apps and telling the user to quit and reapply. For app-owned
