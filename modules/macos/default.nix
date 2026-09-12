@@ -33,7 +33,7 @@
           orientation = "bottom";
           show-recents = false;
           tilesize = 75;
-          wvous-bl-corner = 4;
+          wvous-bl-corner = 10;
           wvous-br-corner = 4;
           wvous-tl-corner = 13;
           wvous-tr-corner = 12;
