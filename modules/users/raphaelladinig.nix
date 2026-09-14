@@ -32,6 +32,7 @@
       "obs"
       "petrichor"
       "soulseek"
+      "spotify"
       "tailscale-app"
       "vicinae"
       "wispr-flow"
