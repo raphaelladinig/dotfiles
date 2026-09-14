@@ -1,5 +1,7 @@
-{ ... }:
+{ den, ... }:
 {
+  den.aspects.macos.includes = [ den.aspects.app-preferences ];
+
   den.aspects.macos.darwin =
     { config, lib, ... }:
     let
@@ -11,6 +13,13 @@
     in
     {
       security.pam.services.sudo_local.touchIdAuth = true;
+
+      # macOS stores the system-wide AutoFill toggle in Safari's preferences.
+      dotfiles.appPreferences.password-autofill = {
+        domain = "com.apple.Safari";
+        processName = "Safari";
+        preferences.AutoFillPasswords = false;
+      };
 
       system.defaults = {
         NSGlobalDomain = {

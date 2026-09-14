@@ -46,6 +46,12 @@ skipping open apps and telling the user to quit and reapply. For app-owned
 configuration files, follow `modules/apps/keepassxc.nix`: merge managed keys
 while preserving other settings and skip writes while the app is running.
 
+The macOS "AutoFill Passwords and Passkeys" toggle is managed in
+`modules/macos/default.nix` through `com.apple.Safari.AutoFillPasswords`.
+It uses the app-preferences helper to skip writes while Safari is open.
+Writing Safari's protected preferences may require Full Disk Access for the
+terminal running activation.
+
 Helium's `preferences.json` and `local-state.json` contain curated settings, not
 profile exports. Keep account data, history, identifiers, and extension state out
 of these files. Darwin activation merges them as the primary user only while Helium
