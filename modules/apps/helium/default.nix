@@ -19,7 +19,6 @@
       asUser =
         command:
         ''launchctl asuser "$(id -u -- ${lib.escapeShellArg user})" sudo --user=${lib.escapeShellArg user} --set-home -- ${command}'';
-      policyFile = "/Library/Managed Preferences/${user}/net.imput.helium.plist";
       extensionPython = pkgs.python3.withPackages (ps: [ ps.plyvel ]);
     in
     {
@@ -49,8 +48,6 @@
             ${lib.escapeShellArg "${userDataDir}/Local State"} ${./local-state.json}
           ${asUser "${extensionPython}/bin/python3 ${./apply-dark-reader.py}"} \
             ${lib.escapeShellArg "${userDataDir}/Default"}
-          ${pkgs.python3}/bin/python3 ${./apply-extension-policy.py} \
-            ${lib.escapeShellArg policyFile} ${./extensions.csv}
         fi
       '';
     };
@@ -64,6 +61,15 @@
     }:
     {
       dotfiles.helium.enable = lib.mkDefault true;
+
+      home.file.".config/helium/extensions.mobileconfig" = {
+        source = pkgs.runCommand "helium-extensions.mobileconfig" { } ''
+          ${pkgs.python3}/bin/python3 ${./generate-extension-profile.py} ${./extensions.csv} "$out"
+        '';
+        onChange = ''
+          echo 'Helium extension profile changed. Open ~/.config/helium/extensions.mobileconfig and install it in System Settings > General > Device Management.'
+        '';
+      };
 
       home.file."Library/Application Support/net.imput.helium/NativeMessagingHosts/org.keepassxc.keepassxc_browser.json" =
         lib.mkIf (config.dotfiles.helium.enable && config.dotfiles.keepassxc.enable) {

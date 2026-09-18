@@ -60,10 +60,14 @@ shared warning helper emits one reminder per app. Search uses
 macOS recommended policies to avoid editing protected search preferences.
 
 Helium's `extensions.csv` is the source for its macOS `ExtensionInstallForcelist`
-and `ExtensionSettings` toolbar pins. Blank pin values preserve existing settings.
-Darwin activation merges that list into the primary user's managed preferences
-while Helium is closed, preserving other policy keys. Keep the CSV updated when
-adding or removing forced extensions.
+and `ExtensionSettings` toolbar pins. Blank pin values leave pinning unmanaged.
+Home Manager builds a user configuration profile at
+`~/.config/helium/extensions.mobileconfig`. Open it and install it in System Settings
+> General > Device Management after activation and whenever the CSV changes.
+Stable profile identifiers allow an updated profile to replace the installed one.
+Do not write directly to `/Library/Managed Preferences`; macOS regenerates it.
+Keep the CSV updated when adding or removing forced extensions. Removing the Nix
+configuration does not uninstall the profile; remove it through Device Management.
 
 Helium's `apply-dark-reader.py` sets Dark Reader to "Invert listed only" in
 the Default profile's local and sync extension stores while Helium is closed.
