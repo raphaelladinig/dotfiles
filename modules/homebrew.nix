@@ -31,6 +31,7 @@
         taps = builtins.attrNames config.nix-homebrew.taps;
 
         onActivation = {
+          extraFlags = [ "--verbose" ];
           autoUpdate = false;
           cleanup = "uninstall";
           upgrade = true;
