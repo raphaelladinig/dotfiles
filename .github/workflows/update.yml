@@ -32,7 +32,8 @@ jobs:
         id: update
         run: |
           nix develop --command just update
-          if git diff --quiet -- flake.lock; then
+          nix develop --command just write-flake
+          if git diff --quiet -- flake.lock flake.nix; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"
@@ -58,9 +59,11 @@ jobs:
           commit-message: 'chore(nix): update flake dependencies'
           title: 'chore(nix): update flake dependencies'
           body: |
-            Runs `just update` to refresh the main flake's locked dependencies.
+            Runs `just update` to refresh the main flake's locked dependencies, then `just write-flake` to regenerate `flake.nix`.
 
             Validation passed in the update workflow: `just check`, the Nix base template check, and `just build sol`.
 
             Review and merge manually, then apply the configuration when ready.
-          add-paths: flake.lock
+          add-paths: |
+            flake.lock
+            flake.nix
