@@ -104,16 +104,6 @@ steps in sync with the validation recipes.
 Check runs in the same concurrency group run one at a time and queue up to 100
 pending runs with `queue: max`.
 
-`.github/workflows/update.yml` runs `just update` every Monday at 07:23 UTC
-and on manual dispatch. It updates the main `flake.lock`, runs `just write-flake`
-to regenerate `flake.nix`, runs the same checks and build, and opens or updates
-one PR containing both files for manual merging. It leaves the
-template lockfile and stable release pin unchanged. Enable "Allow GitHub
-Actions to create and approve pull requests" in the repository settings.
-PRs created or updated with `GITHUB_TOKEN` trigger check workflow runs that
-require approval. The update workflow validates changes before opening or
-updating the PR.
-
 The reusable Nix base lives in `modules/templates/_nix-base` and is exposed
 through `modules/templates/default.nix`. Keep the template under `_nix-base/` so
 import-tree excludes its modules from the parent flake. Keep it general, without
