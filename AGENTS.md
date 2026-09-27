@@ -51,6 +51,8 @@ The macOS "AutoFill Passwords and Passkeys" toggle is managed in
 It uses the app-preferences helper to skip writes while Safari is open.
 Writing Safari's protected preferences may require Full Disk Access for the
 terminal running activation.
+Failed preference writes print a warning and allow activation to continue. Fix
+access and reapply to enforce any settings that could not be written.
 
 Helium's `preferences.json` and `local-state.json` contain curated settings, not
 profile exports. Keep account data, history, identifiers, and extension state out

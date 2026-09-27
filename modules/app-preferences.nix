@@ -57,10 +57,11 @@
               ${warnPreferencesSkipped processName}
             else
               ${lib.concatStringsSep "\n" (
-                lib.mapAttrsToList (
-                  name: value:
-                  run "/usr/bin/defaults write ${lib.escapeShellArg domain} ${lib.escapeShellArg name} ${valueType value} ${lib.escapeShellArg (writeValueString value)}"
-                ) preferences
+                lib.mapAttrsToList (name: value: ''
+                  if ! ${run "/usr/bin/defaults write ${lib.escapeShellArg domain} ${lib.escapeShellArg name} ${valueType value} ${lib.escapeShellArg (writeValueString value)}"}; then
+                    printf '%s\n' ${lib.escapeShellArg "Could not apply ${domain}.${name}. Check preference permissions; protected apps may require Full Disk Access for your terminal. Run `just switch` again after fixing access."} >&2
+                  fi
+                '') preferences
               )}
             fi
           fi
