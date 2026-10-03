@@ -1,4 +1,4 @@
-host := `hostname -s`
+host := "caelum"
 
 default:
     @just --list

@@ -90,10 +90,11 @@ Use the recipes in `justfile` for validation and activation:
 - Enter `nix develop` when repository tools are missing from the shell.
 - For code or configuration changes, run `just check`. It checks Nix formatting,
   Fish and JavaScript syntax, Lua linting and formatting, and the flake.
-- For changes to the host configuration, also run `just build sol` to build
+- For changes to the host configuration, also run `just build caelum` to build
   without activation. Specify the intended host when working on another machine;
-  omitting it uses the local hostname.
-- Run `just switch sol` when the task includes applying the configuration.
+  omitting it uses `caelum`. The flake host key is `caelum`; `modules/hosts/caelum.nix`
+  manages the computer name and hostnames as `caelum`.
+- Run `just switch caelum` when the task includes applying the configuration.
   Activation changes the live system and runs Homebrew upgrades and cleanup,
   including removal of packages absent from the declared configuration.
 - For documentation-only edits, review the diff and verify referenced paths and
@@ -101,7 +102,7 @@ Use the recipes in `justfile` for validation and activation:
 
 GitHub Actions runs `.github/workflows/check.yml` on pull requests, pushes to `main`,
 and manual dispatch. It runs `just check`, validates the Nix base template, and
-builds `sol` on an Apple Silicon macOS runner without activation. Keep these
+builds `caelum` on an Apple Silicon macOS runner without activation. Keep these
 steps in sync with the validation recipes.
 Check runs in the same concurrency group run one at a time and queue up to 100
 pending runs with `queue: max`.

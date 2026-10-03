@@ -14,11 +14,11 @@ return {
 			},
 			options = {
 				darwin = {
-					expr = "(builtins.getFlake(toString ./.)).darwinConfigurations.sol.options",
+					expr = "(builtins.getFlake(toString ./.)).darwinConfigurations.caelum.options",
 				},
 				home_manager = {
 					expr = [[
-            (builtins.getFlake(toString ./.)).darwinConfigurations.sol.options.home-manager.users.type.getSubOptions []
+            (builtins.getFlake(toString ./.)).darwinConfigurations.caelum.options.home-manager.users.type.getSubOptions []
           ]],
 				},
 			},

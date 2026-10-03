@@ -16,7 +16,7 @@ concurrency:
 
 jobs:
   check:
-    name: Check and build sol
+    name: Check and build caelum
     runs-on: macos-15
     timeout-minutes: 60
     steps:
@@ -34,5 +34,5 @@ jobs:
       - name: Check Nix base template
         run: nix flake check path:./modules/templates/_nix-base
 
-      - name: Build sol
-        run: nix develop --command just build sol
+      - name: Build caelum
+        run: nix develop --command just build caelum
