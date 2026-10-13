@@ -10,7 +10,19 @@
       ...
     }:
     let
-      debuggerPython = pkgs.python3.withPackages (ps: [ ps.debugpy ]);
+      debuggerPython = pkgs.python3.withPackages (ps: [
+        # Keep 1.8.21 until nixpkgs-unstable includes NixOS/nixpkgs#572564.
+        (ps.debugpy.overridePythonAttrs (old: {
+          version = "1.8.21";
+          src = pkgs.fetchFromGitHub {
+            owner = "microsoft";
+            repo = "debugpy";
+            tag = "v1.8.21";
+            hash = "sha256-7XM476tfL6QLCHB1kwlbN/dmlgnjuTE+ulQ9yOHfgEE=";
+            postFetch = builtins.replaceStrings [ "v${old.version}" ] [ "v1.8.21" ] old.src.postFetch;
+          };
+        }))
+      ]);
     in
     {
       options.dotfiles.neovim.langs.python.enable = lib.mkEnableOption "Neovim Python support" // {
