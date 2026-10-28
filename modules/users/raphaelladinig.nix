@@ -60,6 +60,7 @@
           iina
           just
           nh
+          pnpm
           shottr
           signal-desktop
           tokei
