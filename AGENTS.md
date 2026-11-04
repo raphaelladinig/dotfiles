@@ -50,6 +50,10 @@ regression proof with
 It evaluates the module with the pinned Nix library and never writes live app
 defaults. For app-owned configuration files, follow `modules/apps/keepassxc.nix`: merge managed keys
 while preserving other settings and skip writes while the app is running.
+KeePassXC merges settings in a separate script so failures stop the merge even
+when Home Manager catches its exit status. Failed updates warn and continue
+activation. Stage replacements beside the destination before renaming them to
+preserve existing settings on failure. Home Manager dry runs skip the script.
 
 The macOS "AutoFill Passwords and Passkeys" toggle is managed in
 `modules/macos/default.nix` through `com.apple.Safari.AutoFillPasswords`.
