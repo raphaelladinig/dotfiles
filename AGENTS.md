@@ -60,6 +60,13 @@ of these files. Darwin activation merges them as the primary user only while Hel
 is closed. All Helium preference writers run in the same activation shell so the
 shared warning helper emits one reminder per app. Search uses
 macOS recommended policies to avoid editing protected search preferences.
+Each Python preference writer warns on failure and lets the remaining writers
+and activation continue. Fix the reported access, file contents, or database
+lock issue and run `just switch` again with Helium closed. Failed writes leave
+invalid JSON and locked databases intact.
+Run `python3 -m unittest discover -s tests -p test_helium_activation.py -v` for
+the focused activation regression tests. They build an isolated activation
+fixture with the pinned Python and plyvel packages and use temporary app data.
 
 Helium's `extensions.csv` is the source for its macOS `ExtensionInstallForcelist`
 and `ExtensionSettings` toolbar pins. Blank pin values leave pinning unmanaged.

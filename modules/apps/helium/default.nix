@@ -42,12 +42,18 @@
         if /usr/bin/pgrep -x -u "$(id -u -- ${lib.escapeShellArg user})" Helium >/dev/null; then
           ${warnPreferencesSkipped "Helium"}
         else
-          ${asUser "${pkgs.python3}/bin/python3 ${./apply-preferences.py}"} \
-            ${lib.escapeShellArg "${userDataDir}/Default/Preferences"} ${./preferences.json}
-          ${asUser "${pkgs.python3}/bin/python3 ${./apply-preferences.py}"} \
-            ${lib.escapeShellArg "${userDataDir}/Local State"} ${./local-state.json}
-          ${asUser "${extensionPython}/bin/python3 ${./apply-dark-reader.py}"} \
-            ${lib.escapeShellArg "${userDataDir}/Default"}
+          if ! ${asUser "${pkgs.python3}/bin/python3 ${./apply-preferences.py}"} \
+            ${lib.escapeShellArg "${userDataDir}/Default/Preferences"} ${./preferences.json}; then
+            printf '%s\n' ${lib.escapeShellArg "Could not apply Helium preferences at ${userDataDir}/Default/Preferences. Check the error above, fix access or file contents, and run `just switch` again with Helium closed."} >&2
+          fi
+          if ! ${asUser "${pkgs.python3}/bin/python3 ${./apply-preferences.py}"} \
+            ${lib.escapeShellArg "${userDataDir}/Local State"} ${./local-state.json}; then
+            printf '%s\n' ${lib.escapeShellArg "Could not apply Helium Local State at ${userDataDir}/Local State. Check the error above, fix access or file contents, and run `just switch` again with Helium closed."} >&2
+          fi
+          if ! ${asUser "${extensionPython}/bin/python3 ${./apply-dark-reader.py}"} \
+            ${lib.escapeShellArg "${userDataDir}/Default"}; then
+            printf '%s\n' ${lib.escapeShellArg "Could not apply Helium Dark Reader settings under ${userDataDir}/Default. Check the error above, fix access or close processes using its extension databases, and run `just switch` again with Helium closed."} >&2
+          fi
         fi
       '';
     };
