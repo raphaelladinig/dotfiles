@@ -22,6 +22,7 @@ check-python:
 check-neovim:
     nix run .#check-neovim
     nix develop --command python3 -B tests/neovim_dialects.py
+    nix develop --command bash tests/neovim_luacheck_context.sh
 
 build hostname=host:
     nh darwin build . -H {{ hostname }}

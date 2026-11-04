@@ -135,7 +135,8 @@ Use the recipes in `justfile` for validation and activation:
   editor, plus declared tools for Lua, Python, and Nix. It runs from a temporary
   working directory with isolated HOME/XDG paths and no editor trust state.
   It checks lazy language setup, formatters, parsers, completion, and Python DAP.
-  It also runs `tests/neovim_dialects.py` for the XML and web dialect regressions.
+  It also runs `tests/neovim_dialects.py` for XML and web dialects and
+  `tests/neovim_luacheck_context.sh` for concurrent linting across projects.
   It does not activate configuration or download language servers. To diagnose
   the smoke harness with a fixture, run `nix run .#check-neovim -- <fixture-home>`
   with generated `.config/nvim` and `.local/share/nvim` trees.
