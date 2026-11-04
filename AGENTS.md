@@ -81,6 +81,10 @@ Run `python3 -m unittest discover -s tests -p test_helium_activation.py -v` for
 the focused activation regression tests. They build an isolated activation
 fixture with the pinned Python and plyvel packages and use temporary app data.
 
+For preference-merger changes, run `python3 -B tests/test_helium_preference_types.py`.
+It uses temporary fixtures without reading browser data. Keep `-B` to avoid
+repository bytecode artifacts.
+
 Helium's `extensions.csv` is the source for its macOS `ExtensionInstallForcelist`
 and `ExtensionSettings` toolbar pins. Blank pin values leave pinning unmanaged.
 Home Manager builds a user configuration profile at

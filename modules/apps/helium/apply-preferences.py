@@ -25,7 +25,9 @@ def main():
     if not isinstance(preferences, dict):
         raise ValueError(f"Expected a JSON object: {path}")
     merge(preferences, settings)
-    if preferences == json.loads(original):
+    if json.dumps(preferences, sort_keys=True) == json.dumps(
+        json.loads(original), sort_keys=True
+    ):
         return
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = None
