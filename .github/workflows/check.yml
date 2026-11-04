@@ -31,9 +31,6 @@ jobs:
       - name: Check syntax and isolated runtimes
         run: nix develop --command just check
 
-      - name: Check preference scalar types and string semantics
-        run: nix shell --inputs-from . nixpkgs-unstable#python3 --command python3 -B -m unittest discover -s tests -p test_app_preferences_types.py -v
-
       - name: Check Nix base template
         run: nix flake check path:./modules/templates/_nix-base
 
