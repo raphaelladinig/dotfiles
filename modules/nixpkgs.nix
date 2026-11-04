@@ -3,7 +3,7 @@ let
   nixpkgsConfig = system: {
     config.allowUnfree = true;
     overlays = [
-      (final: _prev: {
+      (final: prev: {
         stable = import inputs.nixpkgs-stable {
           inherit system;
           config.allowUnfree = final.config.allowUnfree or false;
@@ -12,6 +12,16 @@ let
           inherit system;
           config.allowUnfree = final.config.allowUnfree or false;
         };
+        # The locked WhatsApp release is no longer available from upstream.
+        whatsapp-for-mac = prev.whatsapp-for-mac.overrideAttrs (finalAttrs: {
+          version = "2.26.44.15";
+          src = prev.fetchzip {
+            extension = "zip";
+            name = "WhatsApp.app";
+            url = "https://web.whatsapp.com/desktop/mac_native/release/?version=${finalAttrs.version}&extension=zip&configuration=Release&branch=master&is_buck=true";
+            hash = "sha256-U3Fr5Gg2L6e2Bdu/qWIVYuWQ1xPER9fuTLo39Q6j/4U=";
+          };
+        });
       })
     ];
   };
