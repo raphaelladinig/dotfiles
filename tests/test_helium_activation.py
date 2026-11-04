@@ -110,7 +110,9 @@ import pathlib, plyvel, sys
 for storage in {STORES!r}:
     with plyvel.DB(str(pathlib.Path(sys.argv[1]) / storage / {EXTENSION!r})) as db:
         assert db.get(b'enabledByDefault') == b'false'
-        assert db.get(b'applyToListedOnly') == b'true'
+        assert db.get(b'schemeVersion') == b'2'
+        assert db.get(b'enabledFor') == b'[]'
+        assert db.get(b'disabledFor') == b'[]'
 """
         )
 

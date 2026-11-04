@@ -93,8 +93,13 @@ configuration does not uninstall the profile; remove it through Device Managemen
 
 Helium's `apply-dark-reader.py` sets Dark Reader to "Invert listed only" in
 the Default profile's local and sync extension stores while Helium is closed.
-It preserves site lists and other settings. It also sets the legacy mode key
-when needed so Dark Reader's first-run migration preserves the declared mode.
+It migrates legacy site lists using their original mode before setting the new
+mode and schema version. It preserves existing modern lists, sync list chunks,
+legacy entries, and unrelated settings. Each store migrates independently so
+mixed versions and fresh stores keep the declared mode after Dark Reader starts.
+Focused fixtures live in `tests/test_dark_reader_migration.py` and need Python
+with `plyvel`. Set `DARK_READER_SOURCE` to a Dark Reader checkout to also verify
+its startup loader through `tests/dark_reader_startup.mjs` with Node.js.
 
 Git signs commits and tags with the SSH public key in `modules/apps/git.nix`.
 KeePassXC must load the matching private key into the SSH agent before committing.
