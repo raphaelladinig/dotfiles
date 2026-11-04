@@ -126,7 +126,21 @@ Use the recipes in `justfile` for validation and activation:
 
 - Enter `nix develop` when repository tools are missing from the shell.
 - For code or configuration changes, run `just check`. It checks Nix formatting,
-  Fish and JavaScript syntax, Lua linting and formatting, and the flake.
+  Fish, JavaScript, and Python syntax, Lua linting and formatting, Python
+  regression tests, isolated Neovim startup, and the flake.
+- `just check-python` compiles Python in memory without source-tree bytecode and
+  discovers standard-library `unittest` tests named `tests/test_*.py`. Keep
+  focused regression tests under `tests/` with defect-specific names.
+  The development shell includes Python with `plyvel` for LevelDB fixtures.
+- `just check-neovim` uses caelum's generated Home Manager config and wrapped
+  editor, plus declared tools for Lua, Python, and Nix. It runs from a temporary
+  working directory with isolated HOME/XDG paths and no editor trust state.
+  It checks lazy language setup, formatters, parsers, completion, and Python DAP.
+  It also runs `tests/neovim_dialects.py` for XML and web dialects and
+  `tests/neovim_luacheck_context.sh` for concurrent linting across projects.
+  It does not activate configuration or download language servers. To diagnose
+  the smoke harness with a fixture, run `nix run .#check-neovim -- <fixture-home>`
+  with generated `.config/nvim` and `.local/share/nvim` trees.
 - For changes to the host configuration, also run `just build caelum` to build
   without activation. Specify the intended host when working on another machine;
   omitting it uses `caelum`. The flake host key is `caelum`; `modules/hosts/caelum.nix`

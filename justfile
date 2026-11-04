@@ -11,8 +11,18 @@ alias w := write-flake
 
 check:
     nix fmt -- --check $(find . -name '*.nix' -type f -print)
-    nix develop --command bash -euo pipefail -c 'fish -n modules/apps/fish/config/config.fish; (cd modules/apps/neovim && luacheck . && stylua --check .); node --check modules/macos/config/apply-wallpaper.js'
+    nix develop --command bash -euo pipefail -c 'fish -n modules/apps/fish/config/config.fish; (cd modules/apps/neovim && luacheck . ../../../tests/*.lua && stylua --check . ../../../tests/*.lua); node --check modules/macos/config/apply-wallpaper.js'
+    just check-python
+    just check-neovim
     nix flake check
+
+check-python:
+    nix develop --command python3 -B tests/check_python.py
+
+check-neovim:
+    nix run .#check-neovim
+    nix develop --command python3 -B tests/neovim_dialects.py
+    nix develop --command bash tests/neovim_luacheck_context.sh
 
 build hostname=host:
     nh darwin build . -H {{ hostname }}
