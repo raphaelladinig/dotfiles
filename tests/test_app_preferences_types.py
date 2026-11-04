@@ -27,6 +27,14 @@ class AppPreferenceTypesTest(unittest.TestCase):
             cwd=ROOT,
             text=True,
         )
+        subprocess.run(
+            [
+                "nix", "build", "--impure", "--no-link", "--expr",
+                f"(import {cls.nixpkgs} {{ system = builtins.currentSystem; }}).python3",
+            ],
+            cwd=ROOT,
+            check=True,
+        )
 
     def setUp(self):
         self.temporary = tempfile.TemporaryDirectory(prefix="app-preference-types-")
@@ -59,6 +67,7 @@ class AppPreferenceTypesTest(unittest.TestCase):
           let
             lib = import {self.nixpkgs}/lib;
           in (lib.evalModules {{
+            specialArgs.pkgs = import {self.nixpkgs} {{ system = builtins.currentSystem; }};
             modules = [
               (import {ROOT}/modules/app-preferences.nix {{}}).den.aspects.app-preferences.darwin
               {{
@@ -154,14 +163,40 @@ fixture_pgrep() {
         self.assertEqual(self.mutations(), ["write"])
 
     def test_escaping(self):
-        key = "key ' \" $(false); spaces"
-        value = "value ' \" $(false); \\ spaces\nsecond line"
-        self.seed({key: "before"})
-        self.apply({key: value})
-        self.assertEqual(self.read("read", key), value)
-        self.log.unlink()
-        self.apply({key: value})
+        key = "key.with.dots ' \" $(false); \\ spaces"
+        values = [
+            "value ' \" $(false); \\ spaces\nsecond line",
+            "two \\\\ slashes; literal \\n and \\t; `false` $HOME & | < >",
+            "trailing newline\n\n",
+            "",
+        ]
+        for value in values:
+            with self.subTest(value=value):
+                self.log.unlink(missing_ok=True)
+                self.seed({key: "before", "key": {"with": {"dots": "unmanaged"}}})
+                self.apply({key: value})
+                contents = plistlib.loads(self.plist.read_bytes())
+                self.assertIs(type(contents[key]), str)
+                self.assertEqual(contents[key], value)
+                self.assertEqual(contents["key"], {"with": {"dots": "unmanaged"}})
+                self.assertEqual(self.mutations(), ["write"])
+                before = self.plist.read_bytes()
+                self.log.unlink()
+                self.apply({key: value})
+                self.assertEqual(self.mutations(), [])
+                self.assertEqual(self.plist.read_bytes(), before)
+                result = self.apply({key: value}, app_open=True, copies=2)
+                self.assertNotIn("Skipping PreferenceFixture preferences:", result.stdout)
+                self.assertEqual(self.mutations(), [])
+
+    def test_matching_escaped_strings_do_not_warn_for_open_app(self):
+        preferences = {"one": "\\", "two": "\\\\", "letters": r"\n\t", "lines": "a\nb\n"}
+        self.seed(preferences)
+        before = self.plist.read_bytes()
+        result = self.apply(preferences, app_open=True, copies=2)
+        self.assertNotIn("Skipping PreferenceFixture preferences:", result.stdout)
         self.assertEqual(self.mutations(), [])
+        self.assertEqual(self.plist.read_bytes(), before)
 
     def test_open_app_skips_type_repair_and_warns_once(self):
         self.seed({"value": "0"})

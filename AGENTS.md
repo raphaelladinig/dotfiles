@@ -43,13 +43,17 @@ optimisation after garbage collection succeeds to deduplicate identical files.
 For macOS app preferences, use `dotfiles.appPreferences` from
 `modules/app-preferences.nix` for scalar defaults. Preserve its behavior of
 checking both value and scalar type, skipping open apps, and telling the user to
-quit and reapply. Mistyped keys are removed before rewriting because `defaults`
+quit and reapply. Compare strings through `defaults export` and the declared
+Python's plist parser, using literal dictionary keys. `defaults read` display
+escaping varies by macOS version and shell command substitution strips trailing
+newlines. Mistyped keys are removed before rewriting because `defaults`
 can preserve the old numeric type for equal values. Run the temporary-plist
 regression proof with
 `python3 -m unittest discover -s tests -p test_app_preferences_types.py` on macOS.
-It evaluates the module with the pinned Nix library and never writes live app
-defaults. For app-owned configuration files, follow `modules/apps/keepassxc.nix`: merge managed keys
-while preserving other settings and skip writes while the app is running.
+It evaluates the module with the pinned Nix library and Python and never writes
+live app defaults. For app-owned configuration files, follow
+`modules/apps/keepassxc.nix`: merge managed keys while preserving other settings
+and skip writes while the app is running.
 KeePassXC merges settings in a separate script so failures stop the merge even
 when Home Manager catches its exit status. Failed updates warn and continue
 activation. Stage replacements beside the destination before renaming them to
@@ -128,6 +132,7 @@ GitHub Actions runs `.github/workflows/check.yml` on pull requests, pushes to `m
 and manual dispatch. It runs `just check`, validates the Nix base template, and
 builds `caelum` on an Apple Silicon macOS runner without activation. Keep these
 steps in sync with the validation recipes.
+It also runs the focused app-preference regression suite on macOS 15.
 Check runs in the same concurrency group run one at a time and queue up to 100
 pending runs with `queue: max`.
 
