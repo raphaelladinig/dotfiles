@@ -91,6 +91,10 @@ adding a feature. Feature modules contribute files through
 `dotfiles.neovim.configFiles`; `init.lua` discovers the linked Lua modules.
 Language modules return `{ filetypes, setup }` and initialize on the first
 matching filetype. Keep packages and plugins in Nix and runtime behavior in Lua.
+Keep lazy triggers aligned with bundled server filetypes and formatter mappings.
+Run `python3 tests/neovim_dialects.py` for XML or web dialect changes. It builds
+the managed configuration and checks first-open LSP attachment and formatter
+selection in isolated Neovim processes without activation.
 
 Use the recipes in `justfile` for validation and activation:
 

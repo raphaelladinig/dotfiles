@@ -2,6 +2,7 @@ return {
   filetypes = {
     "css",
     "scss",
+    "less",
     "html",
     "javascript",
     "typescript",
@@ -22,6 +23,7 @@ return {
       local formatters_by_ft = require("conform").formatters_by_ft
       formatters_by_ft.css = { "prettierd" }
       formatters_by_ft.scss = { "prettierd" }
+      formatters_by_ft.less = { "prettierd" }
       formatters_by_ft.html = { "prettierd" }
       formatters_by_ft.javascript = { "prettierd" }
       formatters_by_ft.javascriptreact = { "prettierd" }
