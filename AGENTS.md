@@ -131,6 +131,7 @@ Use the recipes in `justfile` for validation and activation:
 - `just check-python` compiles Python in memory without source-tree bytecode and
   discovers standard-library `unittest` tests named `tests/test_*.py`. Keep
   focused regression tests under `tests/` with defect-specific names.
+  The development shell includes Python with `plyvel` for LevelDB fixtures.
 - `just check-neovim` uses caelum's generated Home Manager config and wrapped
   editor, plus declared tools for Lua, Python, and Nix. It runs from a temporary
   working directory with isolated HOME/XDG paths and no editor trust state.

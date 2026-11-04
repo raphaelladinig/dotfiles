@@ -44,7 +44,7 @@
           luajitPackages.luacheck
           nh
           nodejs
-          python3
+          (python3.withPackages (ps: [ ps.plyvel ]))
           stylua
         ];
       };
