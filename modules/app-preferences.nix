@@ -30,6 +30,16 @@
               "-string"
             else
               throw "App preferences support only boolean, integer, float, and string values.";
+          readType =
+            value:
+            "Type is "
+            + {
+              "-bool" = "boolean";
+              "-int" = "integer";
+              "-float" = "float";
+              "-string" = "string";
+            }
+            .${valueType value};
         in
         ''
           ${prefix}_user=${lib.escapeShellArg user}
@@ -37,16 +47,19 @@
           ${prefix}_preferences_changed=false
 
           ${prefix}_default_matches() {
-            local actual
+            local actual actual_type
             actual="$(
               ${run "/usr/bin/defaults read ${lib.escapeShellArg domain}"} "$1" 2>/dev/null
             )" || return 1
-            [[ "$actual" == "$2" ]]
+            actual_type="$(
+              ${run "/usr/bin/defaults read-type ${lib.escapeShellArg domain}"} "$1" 2>/dev/null
+            )" || return 1
+            [[ "$actual" == "$2" && "$actual_type" == "$3" ]]
           }
 
           ${lib.concatStringsSep "\n" (
             lib.mapAttrsToList (name: value: ''
-              if ! ${prefix}_default_matches ${lib.escapeShellArg name} ${lib.escapeShellArg (valueString value)}; then
+              if ! ${prefix}_default_matches ${lib.escapeShellArg name} ${lib.escapeShellArg (valueString value)} ${lib.escapeShellArg (readType value)}; then
                 ${prefix}_preferences_changed=true
               fi
             '') preferences
@@ -58,7 +71,14 @@
             else
               ${lib.concatStringsSep "\n" (
                 lib.mapAttrsToList (name: value: ''
-                  if ! ${run "/usr/bin/defaults write ${lib.escapeShellArg domain} ${lib.escapeShellArg name} ${valueType value} ${lib.escapeShellArg (writeValueString value)}"}; then
+                  if ! (
+                    actual_type="$(${run "/usr/bin/defaults read-type ${lib.escapeShellArg domain} ${lib.escapeShellArg name}"} 2>/dev/null)" || actual_type=
+                    if [[ -n "$actual_type" && "$actual_type" != ${lib.escapeShellArg (readType value)} ]]; then
+                      # defaults preserves equal numeric values even when their types differ.
+                      ${run "/usr/bin/defaults delete ${lib.escapeShellArg domain} ${lib.escapeShellArg name}"} || exit 1
+                    fi
+                    ${run "/usr/bin/defaults write ${lib.escapeShellArg domain} ${lib.escapeShellArg name} ${valueType value} ${lib.escapeShellArg (writeValueString value)}"}
+                  ); then
                     printf '%s\n' ${lib.escapeShellArg "Could not apply ${domain}.${name}. Check preference permissions; protected apps may require Full Disk Access for your terminal. Run `just switch` again after fixing access."} >&2
                   fi
                 '') preferences

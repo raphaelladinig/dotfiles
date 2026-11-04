@@ -42,8 +42,13 @@ optimisation after garbage collection succeeds to deduplicate identical files.
 
 For macOS app preferences, use `dotfiles.appPreferences` from
 `modules/app-preferences.nix` for scalar defaults. Preserve its behavior of
-skipping open apps and telling the user to quit and reapply. For app-owned
-configuration files, follow `modules/apps/keepassxc.nix`: merge managed keys
+checking both value and scalar type, skipping open apps, and telling the user to
+quit and reapply. Mistyped keys are removed before rewriting because `defaults`
+can preserve the old numeric type for equal values. Run the temporary-plist
+regression proof with
+`python3 -m unittest discover -s tests -p test_app_preferences_types.py` on macOS.
+It evaluates the module with the pinned Nix library and never writes live app
+defaults. For app-owned configuration files, follow `modules/apps/keepassxc.nix`: merge managed keys
 while preserving other settings and skip writes while the app is running.
 
 The macOS "AutoFill Passwords and Passkeys" toggle is managed in
