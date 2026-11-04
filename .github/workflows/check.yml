@@ -28,7 +28,7 @@ jobs:
       - name: Install Nix
         uses: nixbuild/nix-quick-install-action@9f63be77f412a248c9d9a65a4c82cf066cdf8f0c # v35
 
-      - name: Check configuration
+      - name: Check syntax and isolated runtimes
         run: nix develop --command just check
 
       - name: Check preference scalar types and string semantics
