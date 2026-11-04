@@ -1,7 +1,12 @@
 { ... }:
 {
   den.aspects.app-preferences.darwin =
-    { config, lib, ... }:
+    {
+      config,
+      lib,
+      pkgs,
+      ...
+    }:
     let
       warnPreferencesSkipped = import ./_lib/app-preferences-warning.nix { inherit lib; };
       applyIfClosed =
@@ -48,13 +53,24 @@
 
           ${prefix}_default_matches() {
             local actual actual_type
-            actual="$(
-              ${run "/usr/bin/defaults read ${lib.escapeShellArg domain}"} "$1" 2>/dev/null
-            )" || return 1
             actual_type="$(
               ${run "/usr/bin/defaults read-type ${lib.escapeShellArg domain}"} "$1" 2>/dev/null
             )" || return 1
-            [[ "$actual" == "$2" && "$actual_type" == "$3" ]]
+            [[ "$actual_type" == "$3" ]] || return 1
+            if [[ "$3" == "Type is string" ]]; then
+              # defaults read escapes strings differently across macOS versions.
+              ${run "/usr/bin/defaults export ${lib.escapeShellArg domain} -"} 2>/dev/null |
+                ${lib.getExe pkgs.python3} -c ${lib.escapeShellArg ''
+                  import plistlib, sys
+                  actual = plistlib.loads(sys.stdin.buffer.read()).get(sys.argv[1])
+                  sys.exit(not (type(actual) is str and actual == sys.argv[2]))
+                ''} "$1" "$2" 2>/dev/null
+            else
+              actual="$(
+                ${run "/usr/bin/defaults read ${lib.escapeShellArg domain}"} "$1" 2>/dev/null
+              )" || return 1
+              [[ "$actual" == "$2" ]]
+            fi
           }
 
           ${lib.concatStringsSep "\n" (

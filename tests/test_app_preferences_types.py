@@ -189,6 +189,15 @@ fixture_pgrep() {
                 self.assertNotIn("Skipping PreferenceFixture preferences:", result.stdout)
                 self.assertEqual(self.mutations(), [])
 
+    def test_matching_escaped_strings_do_not_warn_for_open_app(self):
+        preferences = {"one": "\\", "two": "\\\\", "letters": r"\n\t", "lines": "a\nb\n"}
+        self.seed(preferences)
+        before = self.plist.read_bytes()
+        result = self.apply(preferences, app_open=True, copies=2)
+        self.assertNotIn("Skipping PreferenceFixture preferences:", result.stdout)
+        self.assertEqual(self.mutations(), [])
+        self.assertEqual(self.plist.read_bytes(), before)
+
     def test_open_app_skips_type_repair_and_warns_once(self):
         self.seed({"value": "0"})
         before = self.plist.read_bytes()
