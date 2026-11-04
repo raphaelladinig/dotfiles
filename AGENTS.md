@@ -105,6 +105,10 @@ Run `python3 tests/neovim_dialects.py` for XML or web dialect changes. It builds
 the managed configuration and checks first-open LSP attachment and formatter
 selection in isolated Neovim processes without activation.
 
+Luacheck captures each buffer's filename and project config directory when lint
+starts. Run `bash tests/neovim_luacheck_context.sh` for its isolated runtime
+regression test with the flake-pinned Neovim, nvim-lint, and Luacheck.
+
 Use the recipes in `justfile` for validation and activation:
 
 - Enter `nix develop` when repository tools are missing from the shell.
